@@ -151,26 +151,6 @@ export default function RegisterPage() {
                             required
                             id="name"
                         />
-                        {/* Email field */}
-                        <TextField
-                            type="email"
-                            label="Email"
-                            placeholder="Enter your email"
-                            value={email}
-                            onChange={setEmail}
-                            required
-                            id="email"
-                        />
-                        {/* Password field */}
-                        <TextField
-                            type="password"
-                            label="Password"
-                            placeholder="Enter your password"
-                            value={password}
-                            onChange={setPassword}
-                            required
-                            id="password"
-                        />
                         {/* Date of Birth field */}
                         <TextField
                             type="text"
@@ -191,6 +171,26 @@ export default function RegisterPage() {
                             options={genderOptions}
                             required
                             id="gender"
+                        />
+                        {/* Email field */}
+                        <TextField
+                            type="email"
+                            label="Email"
+                            placeholder="Enter your email"
+                            value={email}
+                            onChange={setEmail}
+                            required
+                            id="email"
+                        />
+                        {/* Password field */}
+                        <TextField
+                            type="password"
+                            label="Password"
+                            placeholder="Enter your password"
+                            value={password}
+                            onChange={setPassword}
+                            required
+                            id="password"
                         />
                         {/* State field */}
                         <TextField

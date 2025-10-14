@@ -99,7 +99,9 @@ export default function Home() {
                 <h3 className={'justify-self-end text-sm md:text-base text-white font-semibold'}>Learn More</h3>
               </div>
               <div className={'flex flex-col justify-center items-center w-full'}>
-                <Image src={'/images/cooking_chefs.png'} alt={'Bakeprenuer'} width={250} height={80} className={'rounded-lg w-full h-[250px] object-contain'}/>
+                <div className={'w-[57%] object-cover'}>
+                  <Image src={'/images/cooking_chefs.png'} alt={'Bakeprenuer'} width={450} height={80} className={'rounded-lg w-full h-[350px]'}/>
+                </div>
                 <h3 className={'text-center text-base md:text-lg text-[#277B12] font-semibold mt-3 rounded-lg bg-white px-6 py-3'}>Register Now</h3>
               </div>
                 <FaChevronRight width={200} height={200} color={'#277B12'} className={'text-white text-6xl cursor-pointer'}/>
