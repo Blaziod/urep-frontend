@@ -72,10 +72,10 @@ export default function Home() {
           {/*Program specific sections*/}
           {/* Bakeprenuer Nigeria */}
           {/* TODO: Make section like a carousel, with a button to scroll to next/prev program. Each program should have a title, description, image, and a link to the program page */}
-          <div className={'flex flex-col justify-center bg-gradient-to-b from-[#277B12] to-[#F9E79F] my-6 md:mt-10 py-2 px-4 h-[5%] w-[95%] mx-auto'}>
+          <div className={'flex flex-col justify-center bg-gradient-to-b from-[#277B12] to-[#F9E79F] my-6 md:mt-10 py-2 px-4 h-[3%] w-[95%] mx-auto'}>
             <h2 className={'font-semibold text-xl text-center text-black mb-2 md:mb-3'}>Bakeprenuer Nigeria</h2>
             <div className={'flex flex-col lg:flex-row items-center gap-3 lg:gap-x-5 xl:gap-x-10'}>
-              <div className={'flex-col justify-start w-full lg:w-1/2'}>
+              <div className={'flex-col justify-start w-full lg:w-1/2 pl-16'}>
                 <h1 className={'text-white text-lg md:text-xl lg:text-2xl font-semibold '}>Background</h1>
                 <p className={'text-gray-500 font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>The Federal Ministry of Youth Development,
                   is introducing Bakeprenuer Nigeria a Special Skills Training Programme in
@@ -98,8 +98,8 @@ export default function Home() {
                 </ul>
                 <h3 className={'justify-self-end text-sm md:text-base text-white font-semibold'}>Learn More</h3>
               </div>
-              <div className={'flex flex-col justify-center items-center w-full lg:w-1/2'}>
-                <Image src={'/images/cooking_chefs.png'} alt={'Bakeprenuer'} width={350} height={100} className={'rounded-lg w-full max-w-lg'}/>
+              <div className={'flex flex-col justify-center items-center w-full'}>
+                <Image src={'/images/cooking_chefs.png'} alt={'Bakeprenuer'} width={250} height={80} className={'rounded-lg w-full h-[250px] object-contain'}/>
                 <h3 className={'text-center text-base md:text-lg text-[#277B12] font-semibold mt-3 rounded-lg bg-white px-6 py-3'}>Register Now</h3>
               </div>
                 <FaChevronRight width={200} height={200} color={'#277B12'} className={'text-white text-6xl cursor-pointer'}/>
