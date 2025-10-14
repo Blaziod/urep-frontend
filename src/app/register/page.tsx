@@ -120,16 +120,6 @@ export default function RegisterPage() {
                     <h2 className={'font-semibold text-2xl mb-4'}>UNIFIED REGISTRATION PORTAL (UREP)</h2>
 
                     <form onSubmit={handleSubmit} className={'my-5 w-[70%]'}>
-                        {/* NIN field */}
-                        <TextField
-                            type="text"
-                            label="National Identity Number"
-                            placeholder="Enter your NIN"
-                            value={nin}
-                            onChange={setNin}
-                            required
-                            id="nin"
-                        />
                         {/* Programme field */}
                         <TextField
                             type="dropdown"
@@ -140,6 +130,16 @@ export default function RegisterPage() {
                             options={programmeOptions}
                             required
                             id="programme"
+                        />
+                        {/* NIN field */}
+                        <TextField
+                            type="text"
+                            label="National Identity Number"
+                            placeholder="Enter your NIN"
+                            value={nin}
+                            onChange={setNin}
+                            required
+                            id="nin"
                         />
                         {/* Name field */}
                         <TextField
