@@ -98,10 +98,10 @@ export default function RegisterPage() {
                     <div className={'grow'}>
                         <div className={' flex items-center justify-center gap-2 md:gap-8'}>
                             <Link className={'text-white text-lg'} href= '/'>Home</Link>
-                            <Link className={'text-white text-lg'} href= 'about'>About</Link>
-                            <Link className={'text-white text-lg'} href= 'contact'>Program</Link>
-                            <Link className={'text-white text-lg'} href= 'youth'>Youth Policy</Link>
-                            <Link className={'text-white text-lg'} href= 'privacy'>Privacy Policy</Link>
+                            <Link className={'text-white text-lg'} href= '/'>About</Link>
+                            <Link className={'text-white text-lg'} href= '/'>Program</Link>
+                            <Link className={'text-white text-lg'} href= '/'>Youth Policy</Link>
+                            <Link className={'text-white text-lg'} href= '/'>Privacy Policy</Link>
                         </div>
                     </div>
                     <div>
