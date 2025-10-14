@@ -73,7 +73,7 @@ export default function Home() {
           {/* Bakeprenuer Nigeria */}
           {/* TODO: Make section like a carousel, with a button to scroll to next/prev program. Each program should have a title, description, image, and a link to the program page */}
           <div className={'flex flex-col justify-center bg-gradient-to-b from-[#277B12] to-[#F9E79F] my-6 md:mt-10 py-2 px-4 h-[30%] w-[95%] mx-auto'}>
-            <div className={' bg-white px-4 py-2 pt-1 rounded-lg w-96 place-items-center self-center'}>
+            <div className={' bg-white px-4 pt-1 rounded-xs w-96 place-items-center self-center'}>
               <h2 className={'font-semibold text-xl text-center text-black mb-2 md:mb-3'}>Bakeprenuer Nigeria</h2>
             </div>
             <div className={'flex flex-col lg:flex-row items-center gap-3 lg:gap-x-5 xl:gap-x-10'}>
