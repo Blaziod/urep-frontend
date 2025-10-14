@@ -119,7 +119,7 @@ export default function RegisterPage() {
                     <h1 className={'font-bold text-3xl my-2'}>Federal Ministry of Youth Development</h1>
                     <h2 className={'font-semibold text-2xl mb-4'}>UNIFIED REGISTRATION PORTAL (UREP)</h2>
 
-                    <form onSubmit={handleSubmit} className={'w-full my-5'}>
+                    <form onSubmit={handleSubmit} className={'my-5 w-[70%]'}>
                         {/* NIN field */}
                         <TextField
                             type="text"
