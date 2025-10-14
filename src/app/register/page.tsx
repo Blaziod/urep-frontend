@@ -4,8 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import React, {useState} from "react";
 import {TextField} from "@/components";
+import {useRouter} from "next/navigation";
 
 export default function RegisterPage() {
+
+    const router = useRouter();
+    const navigateToTerms = () => {
+        router.push('/terms');
+    }
 
     const [nin, setNin] = useState('');
     const [programme, setProgramme] = useState('');
@@ -91,7 +97,7 @@ export default function RegisterPage() {
 
     return (
         <div className={'w-screen h-screen pt-1'}>
-            <div className={'pt-1 px-32'}>
+            <div className={'pt-1 px-3'}>
                 <div className={'mx-auto flex items-center px-1 py-2 h-20 bg-[#277B12] mb-4'}>
                     <Image className={'mr-2'} src={'/images/fmyd_logo.png'} alt={'logo'} width={80} height={80} />
                     <h1 className={'text-white text-2xl font-bold'}>Yopi Tracker</h1>
@@ -226,6 +232,7 @@ export default function RegisterPage() {
                         {/* Continue button move to the right */}
                         <button
                             type="submit"
+                            onClick={navigateToTerms}
                             className={' bg-[#277B12] text-white font-semibold py-3 px-9 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors float-right disabled:opacity-50'}
                         >
                             Continue

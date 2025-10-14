@@ -49,17 +49,17 @@ export default function ProgramInfo() {
         console.log('Login attempt with:', { program, expectations, organisation, similarParticipation, participateFMYD });
     };
     return (
-        <div className={'py-3 pt-1 px-32'}>
+        <div className={'w-screen'}>
             <div className={'mx-auto flex items-center px-1 py-2 h-20 bg-[#277B12] mb-4'}>
                 <Image className={'mr-2'} src={'/images/fmyd_logo.png'} alt={'logo'} width={80} height={80} />
                 <h1 className={'text-white text-2xl font-bold'}>Yopi Tracker</h1>
                 <div className={'grow'}>
                     <div className={' flex items-center justify-center gap-2 md:gap-8'}>
                         <Link className={'text-white text-lg'} href= '/'>Home</Link>
-                        <Link className={'text-white text-lg'} href= 'about'>About</Link>
-                        <Link className={'text-white text-lg'} href= 'contact'>Program</Link>
-                        <Link className={'text-white text-lg'} href= 'youth'>Youth Policy</Link>
-                        <Link className={'text-white text-lg'} href= 'privacy'>Privacy Policy</Link>
+                        <Link className={'text-white text-lg'} href= '/'>About</Link>
+                        <Link className={'text-white text-lg'} href= '/'>Program</Link>
+                        <Link className={'text-white text-lg'} href= '/'>Youth Policy</Link>
+                        <Link className={'text-white text-lg'} href= '/'>Privacy Policy</Link>
                     </div>
                 </div>
                 <div>
@@ -73,15 +73,15 @@ export default function ProgramInfo() {
             </div>
             <span className={'text-center font-bold text-lg text-black flex flex-row items-center m-4'}>SECTION 2 -<h4 className={'text-black text-center font-medium'}> SPECIFIC PROGRAM INFORMATION</h4></span>
 
-            <div className={'flex flex-row mb-4'}>
+            <div className={'flex flex-row mb-4 px-3'}>
                 <div className={'w-full h-4 bg-[#CECDCD]'}></div>
                 <div className={' w-full h-4 bg-[#277B12]'}></div>
             </div>
-            <div className={'flex flex-row items-center justify-between'}>
+            <div className={'flex flex-row items-center justify-between px-3'}>
                 <h2 className={'font-semibold text-xl'}>1. SPECIFIC PROGRAM INFORMATION</h2>
                 <h2 className={'font-medium text-sm text-gray-500'}>2. Consent and Declaration</h2>
             </div>
-            <div className={'flex flex-row items-center justify-evenly'}>
+            <div className={'flex flex-row items-center justify-evenly px-3'}>
                 <form onSubmit={handleSubmit} className={'w-[700px] gap-y-3.5'}>
                     {/* Name field */}
                     <TextField

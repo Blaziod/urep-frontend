@@ -41,7 +41,7 @@ export default function YouthMentalPage() {
         console.log('Login attempt with:', { stakeholder, organisation, outcome, expectation });
     };
     return (
-        <div className={'py-3 pt-1 px-32'}>
+        <div className={'w-screen'}>
             <div className={'mx-auto flex items-center px-1 py-2 h-20 bg-[#277B12] mb-4'}>
                 <Image className={'mr-2'} src={'/images/fmyd_logo.png'} alt={'logo'} width={80} height={80} />
                 <h1 className={'text-white text-2xl font-bold'}>Yopi Tracker</h1>
@@ -65,14 +65,14 @@ export default function YouthMentalPage() {
             </div>
             <span className={'text-center font-bold text-lg text-black flex flex-row items-center m-4'}>PROGRAM SPECIFIC QUESTIONS -<h4 className={'text-black text-center font-medium'}> National Youth Mental Health Conference </h4></span>
 
-            <div className={'flex flex-row mb-4'}>
+            <div className={'flex flex-row mb-4 px-3'}>
                 <div className={'w-full h-4 bg-[#CECDCD]'}></div>
                 <div className={' w-full h-4 bg-[#277B12]'}></div>
             </div>
             <div className={'flex flex-row items-center justify-between'}>
                 <h2 className={'font-semibold text-xl'}>5. National Youth Mental Health Conference</h2>
             </div>
-            <div className={'flex flex-row items-center justify-evenly'}>
+            <div className={'flex flex-row items-center justify-evenly px-3'}>
                 <form onSubmit={handleSubmit} className={'w-[700px] gap-y-3.5'}>
                     <p className={'text-black text-lg my-3'}>About and T/Cs</p>
                     <p className={'text-black text-lg'}>The National Youth Mental Health Conference is designed to raise awareness, build capacity,
