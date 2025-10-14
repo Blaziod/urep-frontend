@@ -16,8 +16,6 @@ export default function RegisterPage() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
-    const [rememberMe, setRememberMe] = useState(false);
-    const [dropdownValue, setDropdownValue] = useState('');
     const [state, setState] = useState('');
     const [localGovernment, setLocalGovernment] = useState('');
     const [geopoliticalZone, setGeopoliticalZone] = useState('');
@@ -88,7 +86,7 @@ export default function RegisterPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // Handle login logic here
-        console.log('Login attempt with:', { email, password, rememberMe });
+        console.log('Login attempt with:', { email, password });
     };
     return (
         <div className={'py-3 pt-1 px-32'}>
@@ -98,10 +96,10 @@ export default function RegisterPage() {
                 <div className={'grow'}>
                     <div className={' flex items-center justify-center gap-2 md:gap-8'}>
                         <Link className={'text-white text-lg'} href= '/'>Home</Link>
-                        <Link className={'text-white text-lg'} href= 'about'>About</Link>
-                        <Link className={'text-white text-lg'} href= 'contact'>Program</Link>
-                        <Link className={'text-white text-lg'} href= 'youth'>Youth Policy</Link>
-                        <Link className={'text-white text-lg'} href= 'privacy'>Privacy Policy</Link>
+                        <Link className={'text-white text-lg'} href= '/'>About</Link>
+                        <Link className={'text-white text-lg'} href= '/'>Program</Link>
+                        <Link className={'text-white text-lg'} href= '/'>Youth Policy</Link>
+                        <Link className={'text-white text-lg'} href= '/'>Privacy Policy</Link>
                     </div>
                 </div>
                 <div>

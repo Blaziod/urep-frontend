@@ -47,10 +47,10 @@ export default function AfricanYouthPage() {
                 <div className={'grow'}>
                     <div className={' flex items-center justify-center gap-2 md:gap-8'}>
                         <Link className={'text-white text-lg'} href= '/'>Home</Link>
-                        <Link className={'text-white text-lg'} href= 'about'>About</Link>
-                        <Link className={'text-white text-lg'} href= 'contact'>Program</Link>
-                        <Link className={'text-white text-lg'} href= 'youth'>Youth Policy</Link>
-                        <Link className={'text-white text-lg'} href= 'privacy'>Privacy Policy</Link>
+                        <Link className={'text-white text-lg'} href= '/'>About</Link>
+                        <Link className={'text-white text-lg'} href= '/'>Program</Link>
+                        <Link className={'text-white text-lg'} href= '/'>Youth Policy</Link>
+                        <Link className={'text-white text-lg'} href= '/'>Privacy Policy</Link>
                     </div>
                 </div>
                 <div>
@@ -74,7 +74,7 @@ export default function AfricanYouthPage() {
             </div>
             <div className={'flex flex-row items-center justify-evenly'}>
                 <form onSubmit={handleSubmit} className={'w-[700px] gap-y-3.5'}>
-                    <p className={'text-xl my-4'}>About and T'/'Cs</p>
+                    <p className={'text-xl my-4'}>About and T/Cs</p>
                     <p className={'text-xl mb-4'}>African/National Youth Day is commemorated annually to celebrate the contributions of youths
                         to national and continental development. The programme creates awareness of youth issues,
                         showcases achievements, and provides a platform for engagement between youth,

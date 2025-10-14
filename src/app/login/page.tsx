@@ -73,7 +73,7 @@ export default function LoginPage() {
                                     Remember me
                                 </label>
                             </div>
-                            <Link href="/forgot-password" className={'text-sm text-[#277B12] hover:underline'}>
+                            <Link href="/" className={'text-sm text-[#277B12] hover:underline'}>
                                 Forgot password?
                             </Link>
                         </div>
@@ -86,7 +86,7 @@ export default function LoginPage() {
                             Login
                         </button>
                     </form>
-                    <span className={'text-center justify-center text-sm text-gray-500'}>Don't have an account? <Link href="/register" className={'text-[#277B12] hover:underline'}>Register</Link></span>
+                    <span className={'text-center justify-center text-sm text-gray-500'}>Dont have an account? <Link href="/register" className={'text-[#277B12] hover:underline'}>Register</Link></span>
                 </div>
             </div>
         </div>

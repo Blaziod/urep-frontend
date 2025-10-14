@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { FaHome, FaUsers, FaChartBar, FaBell } from 'react-icons/fa';
+import {FaChartBar, FaHome, FaUsers} from 'react-icons/fa';
 
 export default function AdminLayout({
   children,
