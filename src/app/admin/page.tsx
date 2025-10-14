@@ -2,6 +2,21 @@
 import React from 'react';
 import Image from 'next/image';
 import {FaBell, FaSearch, FaSortAmountDown} from 'react-icons/fa';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Legend,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis
+} from 'recharts';
 
 export default function AdminDashboard() {
   // Mock data for demonstration
@@ -18,6 +33,34 @@ export default function AdminDashboard() {
     { id: 4, name: 'Emily Davis', email: 'emily@example.com', phone: '08045678901', status: 'Completed' },
     { id: 5, name: 'Michael Wilson', email: 'michael@example.com', phone: '08056789012', status: 'Pending' },
   ];
+
+  // Mock data for charts
+  const categoryData = [
+    { name: 'Student', value: 540 },
+    { name: 'Employed', value: 320 },
+    { name: 'Semi-employed', value: 280 },
+    { name: 'Others', value: 110 }
+  ];
+
+  const participationData = [
+    { name: 'In Person', value: 750 },
+    { name: 'Online', value: 350 },
+    { name: 'Not Started', value: 150 }
+  ];
+
+  const registrationTrendData = [
+    { name: 'Jan', registrations: 65 },
+    { name: 'Feb', registrations: 90 },
+    { name: 'Mar', registrations: 120 },
+    { name: 'Apr', registrations: 180 },
+    { name: 'May', registrations: 250 },
+    { name: 'Jun', registrations: 310 },
+    { name: 'Jul', registrations: 235 }
+  ];
+
+  // Colors for pie charts
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  //const PARTICIPATION_COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
 
   return (
     <div className="p-6">
@@ -51,41 +94,41 @@ export default function AdminDashboard() {
       </div>
 
       {/* Registration Statistics */}
-      <div className="grid grid-cols-3 gap-6 mb-8">
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-gray-500 mb-2">Total Registrations</h3>
-          <p className="text-3xl font-bold">{stats.totalRegistrations}</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
+          <h3 className="text-gray-500 mb-2 text-sm sm:text-base">Total Registrations</h3>
+          <p className="text-xl sm:text-2xl lg:text-3xl font-bold">{stats.totalRegistrations}</p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-gray-500 mb-2">Completed Registrations</h3>
-          <p className="text-3xl font-bold">{stats.completedRegistrations}</p>
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
+          <h3 className="text-gray-500 mb-2 text-sm sm:text-base">Completed Registrations</h3>
+          <p className="text-xl sm:text-2xl lg:text-3xl font-bold">{stats.completedRegistrations}</p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="text-gray-500 mb-2">Pending Completions</h3>
-          <p className="text-3xl font-bold">{stats.pendingCompletions}</p>
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
+          <h3 className="text-gray-500 mb-2 text-sm sm:text-base">Pending Completions</h3>
+          <p className="text-xl sm:text-2xl lg:text-3xl font-bold">{stats.pendingCompletions}</p>
         </div>
       </div>
 
       {/* Main Content - Two Rows */}
-      <div className="grid grid-cols-1 gap-8">
+      <div className="grid grid-cols-1 gap-6 sm:gap-8">
         {/* Participant Profile */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold">Participant Profile</h2>
-            <div className="flex space-x-4">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+            <h2 className="text-lg sm:text-xl font-semibold">Participant Profile</h2>
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
               {/* Search */}
-              <div className="relative">
+              <div className="relative w-full sm:w-auto">
                 <input
                   type="text"
                   placeholder="Search participants..."
-                  className="pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
                 <FaSearch className="absolute left-3 top-3 text-gray-400" />
               </div>
 
               {/* Sort Dropdown */}
-              <div className="relative">
-                <select className="pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 appearance-none">
+              <div className="relative w-full sm:w-auto">
+                <select className="w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 appearance-none">
                   <option value="">Sort by</option>
                   <option value="status">Status</option>
                   <option value="date">Date</option>
@@ -130,31 +173,74 @@ export default function AdminDashboard() {
         </div>
 
         {/* Participant Group Charts */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold mb-6">Participant Group</h2>
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
+          <h2 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Participant Group</h2>
 
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Pie Chart - Participant Groups */}
-            <div className="border rounded-lg p-4">
-              <h3 className="text-lg font-medium mb-4">Participant Categories</h3>
-              <div className="h-64 flex items-center justify-center bg-gray-100 rounded">
-                <p className="text-gray-500">Pie Chart: Student, Employed, Semi-employed, Others</p>
+            <div className="border rounded-lg p-3 sm:p-4">
+              <h3 className="text-base sm:text-lg font-medium mb-2 sm:mb-4">Participant Categories</h3>
+              <div className="h-48 sm:h-56 lg:h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={categoryData}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      label={({percent }) => `${(percent * 100).toFixed(0)}%`}
+                      outerRadius={60}
+                      fill="#8884d8"
+                      dataKey="value"
+                    >
+                      {categoryData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                    <Tooltip formatter={(value) => [`${value}`, 'Count']} />
+                    <Legend />
+                  </PieChart>
+                </ResponsiveContainer>
               </div>
             </div>
 
             {/* Bar Chart - Participating Options */}
-            <div className="border rounded-lg p-4">
-              <h3 className="text-lg font-medium mb-4">Participation Mode</h3>
-              <div className="h-64 flex items-center justify-center bg-gray-100 rounded">
-                <p className="text-gray-500">Bar Chart: In Person, Online, Not Started</p>
+            <div className="border rounded-lg p-3 sm:p-4">
+              <h3 className="text-base sm:text-lg font-medium mb-2 sm:mb-4">Participation Mode</h3>
+              <div className="h-48 sm:h-56 lg:h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={participationData}
+                    margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" tick={{fontSize: 12}} />
+                    <YAxis tick={{fontSize: 12}} />
+                    <Tooltip />
+                    <Legend wrapperStyle={{fontSize: '12px'}} />
+                    <Bar dataKey="value" name="Participants" fill="#8884d8" />
+                  </BarChart>
+                </ResponsiveContainer>
               </div>
             </div>
 
             {/* Line Graph - Registration Over Time */}
-            <div className="border rounded-lg p-4">
-              <h3 className="text-lg font-medium mb-4">Registration Trend</h3>
-              <div className="h-64 flex items-center justify-center bg-gray-100 rounded">
-                <p className="text-gray-500">Line Graph: Registration Over Time</p>
+            <div className="border rounded-lg p-3 sm:p-4">
+              <h3 className="text-base sm:text-lg font-medium mb-2 sm:mb-4">Registration Trend</h3>
+              <div className="h-48 sm:h-56 lg:h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart
+                    data={registrationTrendData}
+                    margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" tick={{fontSize: 12}} />
+                    <YAxis tick={{fontSize: 12}} />
+                    <Tooltip />
+                    <Legend wrapperStyle={{fontSize: '12px'}} />
+                    <Line type="monotone" dataKey="registrations" stroke="#82ca9d" activeDot={{ r: 6 }} />
+                  </LineChart>
+                </ResponsiveContainer>
               </div>
             </div>
           </div>
