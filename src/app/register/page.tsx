@@ -58,6 +58,7 @@ export default function RegisterPage() {
         { value: 'african_youth', label: 'African/National Youth Day 2025' },
         { value: 'bakeprenuer', label: 'Bakeprenuer Nigeria' },
         { value: 'national_youth', label: 'National Youth Policy Validation Workshop' },
+        { value: 'youth_migration', label: 'Youth Migration Awareness and Management Programme (YMAMP)' },
     ];
 
     // Get the selected program name
@@ -157,17 +158,16 @@ export default function RegisterPage() {
                     <h2 className={'font-semibold text-2xl mb-4'}>UNIFIED REGISTRATION PORTAL (UREP)</h2>
 
                     <form onSubmit={handleSubmit} className={'my-5 w-[70%]'}>
-                        {/* Programme field */}
-                        <TextField
-                            type="dropdown"
-                            label="What programme are you registering for?"
-                            placeholder="Select a programme"
-                            value={programme}
-                            onChange={setProgramme}
-                            options={programmeOptions}
-                            required
-                            id="programme"
-                        />
+                        {/* Programme field - static display */}
+                        <div className="mb-4">
+                            <label htmlFor="programme" className="block mb-2 text-sm mt-3 font-medium text-black">
+                                What programme are you registering for?
+                                <span className="text-red-500 ml-1">*</span>
+                            </label>
+                            <div className="w-full px-4 py-4 border border-gray-300 rounded-lg bg-gray-100">
+                                {selectedProgramName || "Program will be selected from the URL parameter"}
+                            </div>
+                        </div>
                         {programme && (
                             <div className={'flex items-center mt-2 mb-4'}>
                                 <input

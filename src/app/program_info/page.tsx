@@ -1,5 +1,5 @@
 'use client';
-import React, {useState} from 'react';
+import React, {useState, useMemo} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {TextField} from "@/components";
@@ -29,12 +29,19 @@ export default function ProgramInfo() {
     const [similarParticipation, setSimilarParticipation] = useState('');
     const [participateFMYD, setParticipateFMYD] = useState('');
 
-
     const programOptions = [
         { value: 'african_youth', label: 'African/National Youth Day 2025' },
         { value: 'bakeprenuer', label: 'Bakeprenuer Nigeria' },
         { value: 'national_youth', label: 'National Youth Policy Validation Workshop' },
+        { value: 'youth_migration', label: 'Youth Migration Awareness and Management Programme (YMAMP)' },
     ];
+
+    // Get the selected program name
+    const selectedProgramName = useMemo(() => {
+        if (!program) return '';
+        const selectedProgram = programOptions.find(option => option.value === program);
+        return selectedProgram ? selectedProgram.label : '';
+    }, [program]);
 
     const expectationOptions = [
         { value: 'yes', label: 'Yes' },
@@ -92,17 +99,16 @@ export default function ProgramInfo() {
             </div>
             <div className={'flex flex-row items-center justify-evenly px-3'}>
                 <form onSubmit={handleSubmit} className={'w-[700px] gap-y-3.5'}>
-                    {/* Name field */}
-                    <TextField
-                        type="dropdown"
-                        label="Program you are registering for"
-                        placeholder="Select a program"
-                        value={program}
-                        onChange={setProgram}
-                        options={programOptions}
-                        required
-                        id="program"
-                    />
+                    {/* Program field - static display */}
+                    <div className="mb-4">
+                        <label htmlFor="program" className="block mb-2 text-sm mt-3 font-medium text-black">
+                            Program you are registering for
+                            <span className="text-red-500 ml-1">*</span>
+                        </label>
+                        <div className="w-full px-4 py-4 border border-gray-300 rounded-lg bg-gray-100">
+                            {selectedProgramName || "Program will be selected from the URL parameter"}
+                        </div>
+                    </div>
 
                     {/* Phone Nummber field */}
                     <TextField
