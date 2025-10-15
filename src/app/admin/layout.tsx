@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import {FaChartBar, FaHome, FaUsers} from 'react-icons/fa';
+import {FaChartBar, FaHome, FaProjectDiagram, FaUsers} from 'react-icons/fa';
 
 export default function AdminLayout({
   children,
@@ -28,6 +28,13 @@ export default function AdminLayout({
             Dashboard
           </Link>
           <Link 
+            href="/admin/program" 
+            className="flex items-center text-white hover:bg-white/20 p-2 rounded-md"
+          >
+            <FaProjectDiagram className="mr-2" />
+            Program
+          </Link>
+          <Link 
             href="/admin/registrants" 
             className="flex items-center text-white hover:bg-white/20 p-2 rounded-md"
           >
@@ -40,6 +47,12 @@ export default function AdminLayout({
           >
             <FaChartBar className="mr-2" />
             Analytics
+          </Link>
+          <Link href={'/'}
+                className={'flex items-center text-white hover:bg-white/20 p-2 rounded-md'}
+          >
+            <FaHome className="mr-2" />
+            Go to Homepage
           </Link>
         </nav>
       </div>
