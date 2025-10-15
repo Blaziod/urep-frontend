@@ -5,7 +5,6 @@ import Link from "next/link";
 import React, {useMemo, useState} from "react";
 import {TextField} from "@/components";
 import {useRouter} from "next/navigation";
-import {FaTimes} from "react-icons/fa";
 
 export default function RegisterPage() {
 
@@ -15,22 +14,22 @@ export default function RegisterPage() {
         router.push(`/program_info?program=${programme}`);
     }
 
-    const openTermsModal = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        setShowTermsModal(true);
-    }
-
-    // Function to handle accepting terms
-    const acceptTerms = () => {
-        setAgreeProgramTerms(true);
-        setShowTermsModal(false);
-    }
-
-    // Function to handle declining terms
-    const declineTerms = () => {
-        setAgreeProgramTerms(false);
-        setShowTermsModal(false);
-    }
+    // const openTermsModal = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    //     e.preventDefault();
+    //     setShowTermsModal(true);
+    // }
+    //
+    // // Function to handle accepting terms
+    // const acceptTerms = () => {
+    //     setAgreeProgramTerms(true);
+    //     setShowTermsModal(false);
+    // }
+    //
+    // // Function to handle declining terms
+    // const declineTerms = () => {
+    //     setAgreeProgramTerms(false);
+    //     setShowTermsModal(false);
+    // }
 
     const [nin, setNin] = useState('');
     const [programme, setProgramme] = useState('');
@@ -41,8 +40,8 @@ export default function RegisterPage() {
     const [gender, setGender] = useState('');
     const [state, setState] = useState('');
     const [lga, setLga] = useState('');
-    const [agreeProgramTerms, setAgreeProgramTerms] = useState(false);
-    const [showTermsModal, setShowTermsModal] = useState(false);
+    // const [agreeProgramTerms, setAgreeProgramTerms] = useState(false);
+    // const [showTermsModal, setShowTermsModal] = useState(false);
     const [organisation, setOrganisation] = useState('');
 
     // Set the program from URL parameter when component mounts
@@ -67,12 +66,6 @@ export default function RegisterPage() {
         const selectedProgram = programmeOptions.find(option => option.value === programme);
         return selectedProgram ? selectedProgram.label : '';
     }, [programme]);
-
-    const genderOptions= [
-        { value: 'male', label: 'Male' },
-        { value: 'female', label: 'Female' },
-        { value: 'other', label: 'Other' },
-    ];
 
     const stateOptions= [
         { value: 'Abia', label: 'Abia' },
@@ -127,10 +120,18 @@ export default function RegisterPage() {
         { value: 'Akoko', label: 'Akoko' },
     ]
 
+    const organisationOptions= [
+        { value: 'NGO', label: 'NGO' },
+        { value: 'Government Agency', label: 'Government Agency' },
+        { value: 'Private Sector', label: 'Private Sector' },
+        { value: 'Educational Institution', label: 'Educational Institution' },
+        { value: 'Other', label: 'Other' },
+    ];
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // Handle login logic here
-        console.log('Login attempt with:', { nin, programme, name, email, password, dob, gender, state, lga, agreeProgramTerms });
+        console.log('Login attempt with:', { nin, programme, name, email, password, dob, gender, state, lga });
     };
 
     return (
@@ -168,28 +169,29 @@ export default function RegisterPage() {
                                 {selectedProgramName || "Program will be selected from the URL parameter"}
                             </div>
                         </div>
-                        {programme && (
-                            <div className={'flex items-center mt-2 mb-4'}>
-                                <input
-                                    type="checkbox"
-                                    id="program-terms"
-                                    checked={agreeProgramTerms}
-                                    onChange={(e) => setAgreeProgramTerms(e.target.checked)}
-                                    className={'mr-2 h-4 w-4 text-[#277B12] focus:ring-[#277B12] border-gray-300 rounded'}
-                                    required
-                                />
-                                <label htmlFor="program-terms" className={'text-sm text-black font-medium'}>
-                                    By selecting this program, you agree to the <a href="#" onClick={openTermsModal} className={'text-[#277B12] hover:underline font-semibold'}>Terms and Conditions</a> of the {selectedProgramName}.
-                                </label>
-                            </div>
-                        )}
+                        {/*{programme && (*/}
+                        {/*    <div className={'flex items-center mt-2 mb-4'}>*/}
+                        {/*        <input*/}
+                        {/*            type="checkbox"*/}
+                        {/*            id="program-terms"*/}
+                        {/*            checked={agreeProgramTerms}*/}
+                        {/*            onChange={(e) => setAgreeProgramTerms(e.target.checked)}*/}
+                        {/*            className={'mr-2 h-4 w-4 text-[#277B12] focus:ring-[#277B12] border-gray-300 rounded'}*/}
+                        {/*            required*/}
+                        {/*        />*/}
+                        {/*        <label htmlFor="program-terms" className={'text-sm text-black font-medium'}>*/}
+                        {/*            By selecting this program, you agree to the <a href="#" onClick={openTermsModal} className={'text-[#277B12] hover:underline font-semibold'}>Terms and Conditions</a> of the {selectedProgramName}.*/}
+                        {/*        </label>*/}
+                        {/*    </div>*/}
+                        {/*)}*/}
                         {/* Organisation field */}
                         <TextField
-                            type="text"
+                            type="dropdown"
                             label="Organisation"
                             placeholder="Which organisation are you from?"
                             value={organisation}
                             onChange={setOrganisation}
+                            options={organisationOptions}
                             required
                             id="organisation"
                         />
@@ -225,12 +227,11 @@ export default function RegisterPage() {
                         />
                         {/* Gender field */}
                         <TextField
-                            type="dropdown"
+                            type="text"
                             label="Gender"
                             placeholder="Select your gender"
                             value={gender}
                             onChange={setGender}
-                            options={genderOptions}
                             required
                             id="gender"
                         />
@@ -289,48 +290,48 @@ export default function RegisterPage() {
             </div>
             <FooterBar/>
 
-            {/* Terms and Conditions Modal */}
-            {showTermsModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                    <div className="bg-white rounded-lg shadow-lg w-full max-w-2xl">
-                        <div className="flex justify-between items-center p-4 border-b">
-                            <h2 className="text-xl font-bold text-gray-800">Terms and Conditions for {selectedProgramName}</h2>
-                            <button 
-                                onClick={() => setShowTermsModal(false)}
-                                className="text-gray-500 hover:text-gray-700"
-                            >
-                                <FaTimes size={20} />
-                            </button>
-                        </div>
-                        <div className="p-6 max-h-96 overflow-y-auto">
-                            <h3 className="font-semibold text-lg mb-4">Please read and accept the following terms:</h3>
-                            <ul className="list-disc pl-5 space-y-2 mb-4">
-                                <li>Make sure all information provided are accurate. Multiple registration by the same person is not allowed.</li>
-                                <li>This Program will be taken place in Ondo State</li>
-                                <li>Free transportation will be provided by the ministry from Headquarter everyday during the program</li>
-                                <li>This is a three day program.</li>
-                            </ul>
-                            <p className="text-sm text-gray-600 mt-4">
-                                By accepting these terms, you agree to abide by all the conditions specified for participation in {selectedProgramName}.
-                            </p>
-                        </div>
-                        <div className="flex justify-end space-x-4 p-4 border-t">
-                            <button
-                                onClick={declineTerms}
-                                className="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition-colors"
-                            >
-                                Decline
-                            </button>
-                            <button
-                                onClick={acceptTerms}
-                                className="px-4 py-2 bg-[#277B12] text-white rounded hover:bg-green-700 transition-colors"
-                            >
-                                Accept
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
+            {/*/!* Terms and Conditions Modal *!/*/}
+            {/*{showTermsModal && (*/}
+            {/*    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">*/}
+            {/*        <div className="bg-white rounded-lg shadow-lg w-full max-w-2xl">*/}
+            {/*            <div className="flex justify-between items-center p-4 border-b">*/}
+            {/*                <h2 className="text-xl font-bold text-gray-800">Terms and Conditions for {selectedProgramName}</h2>*/}
+            {/*                <button*/}
+            {/*                    onClick={() => setShowTermsModal(false)}*/}
+            {/*                    className="text-gray-500 hover:text-gray-700"*/}
+            {/*                >*/}
+            {/*                    <FaTimes size={20} />*/}
+            {/*                </button>*/}
+            {/*            </div>*/}
+            {/*            <div className="p-6 max-h-96 overflow-y-auto">*/}
+            {/*                <h3 className="font-semibold text-lg mb-4">Please read and accept the following terms:</h3>*/}
+            {/*                <ul className="list-disc pl-5 space-y-2 mb-4">*/}
+            {/*                    <li>Make sure all information provided are accurate. Multiple registration by the same person is not allowed.</li>*/}
+            {/*                    <li>This Program will be taken place in Ondo State</li>*/}
+            {/*                    <li>Free transportation will be provided by the ministry from Headquarter everyday during the program</li>*/}
+            {/*                    <li>This is a three day program.</li>*/}
+            {/*                </ul>*/}
+            {/*                <p className="text-sm text-gray-600 mt-4">*/}
+            {/*                    By accepting these terms, you agree to abide by all the conditions specified for participation in {selectedProgramName}.*/}
+            {/*                </p>*/}
+            {/*            </div>*/}
+            {/*            <div className="flex justify-end space-x-4 p-4 border-t">*/}
+            {/*                <button*/}
+            {/*                    onClick={declineTerms}*/}
+            {/*                    className="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition-colors"*/}
+            {/*                >*/}
+            {/*                    Decline*/}
+            {/*                </button>*/}
+            {/*                <button*/}
+            {/*                    onClick={acceptTerms}*/}
+            {/*                    className="px-4 py-2 bg-[#277B12] text-white rounded hover:bg-green-700 transition-colors"*/}
+            {/*                >*/}
+            {/*                    Accept*/}
+            {/*                </button>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*)}*/}
         </div>
     );
 }

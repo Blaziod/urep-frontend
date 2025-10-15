@@ -72,22 +72,8 @@ export default function AfricanYouthPage() {
                 <h2 className={'font-semibold text-xl'}>3. African/National Youth Day 2025</h2>
                 <h2 className={'font-medium text-sm text-gray-500'}>2. Youth Migration Awareness and Management Programme (YMAMP)</h2>
             </div>
-            <div className={'flex flex-row items-center justify-evenly px-3'}>
+            <div className={'flex flex-row items-center justify-evenly px-3 mt-10'}>
                 <form onSubmit={handleSubmit} className={'w-[700px] gap-y-3.5'}>
-                    <p className={'text-xl my-4'}>About and T/Cs</p>
-                    <p className={'text-xl mb-4'}>African/National Youth Day is commemorated annually to celebrate the contributions of youths
-                        to national and continental development. The programme creates awareness of youth issues,
-                        showcases achievements, and provides a platform for engagement between youth,
-                        government, and stakeholders
-                    </p>
-                    <p className={'text-xl mb-2'}>This programs is for</p>
-                    <ul className={'list-disc text-black leading-8 text-xl'}>
-                        <li>Nigerian youths aged 18-35.</li>
-                        <li>Youth development professionals.</li>
-                        <li>Youth organizations and networks.</li>
-                        <li>Development partners, CSOs, and private sector actors.</li>
-                        <li>Government officials and policymakers.</li>
-                    </ul>
                     {/* Youth Professional field */}
                     <TextField
                         type="text"

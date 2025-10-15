@@ -81,23 +81,8 @@ export default function BakeprenuerPage() {
                 <h2 className={'font-semibold text-xl'}>1. Bakeprenuer Nigeria</h2>
                 <h2 className={'font-medium text-lg text-gray-500'}>2. National Youth Policy Validation Workshop</h2>
             </div>
-            <div className={'flex flex-row items-center justify-evenly px-3'}>
+            <div className={'flex flex-row items-center justify-evenly px-3 mt-10'}>
                 <form onSubmit={handleSubmit} className={'w-[700px] gap-y-3.5'}>
-                    <p className={'text-black text-lg my-3'}>About and T/Cs</p>
-                    <p className={'text-black text-lg'}>Bakeprenuer Nigeria is a youth empowerment and skills development
-                        initiative focused on the baking and confectionery industry.
-                        It seeks to equip young Nigerians with practical baking skills
-                        to enable them to start or expand small-scale businesses,
-                        create job opportunities, and
-                        contribute to reducing unemployment.
-                    </p>
-                    <p className={'text-black text-xl mt-3'}>This programs is for</p>
-                    <ul className={'list-disc text-black leading-8 text-lg mt-2'}>
-                        <li>Youths (18–35 years) interested in baking, confectionery, or food business</li>
-                        <li>Young entrepreneurs or graduates seeking hands-on skills to start a business</li>
-                        <li>Unemployed youths seeking self-reliance through vocational training</li>
-                        <li>Youth-focused organizations supporting entrepreneurship</li>
-                    </ul>
                     {/* Youth Professional field */}
                     <TextField
                         type="text"

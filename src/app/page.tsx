@@ -13,14 +13,22 @@ export default function Home() {
     {
       id: 'bakeprenuer',
       title: 'Bakeprenuer Nigeria',
-      background: 'The Federal Ministry of Youth Development, is introducing Bakeprenuer Nigeria a Special Skills Training Programme in Modern Baking and Confectionery Technologies for youth across all the six geo-political zones.',
+      background: 'Bakeprenuer Nigeria is a youth empowerment and skills development\n' +
+          '                        initiative focused on the baking and confectionery industry.\n' +
+          '                        It seeks to equip young Nigerians with practical baking skills\n' +
+          '                        to enable them to start or expand small-scale businesses,\n' +
+          '                        create job opportunities, and\n' +
+          '                        contribute to reducing unemployment.',
       objectives: [
         'To provide Nigerian youths with modern baking and confectionery skills aligned with industry standards.',
         'To promote entrepreneurship and self-reliance through practical, hands-on learning.'
       ],
       targetAudience: [
-        'Unemployed and underemployed youths aged 18–35 years.',
-        'Young school leavers and graduates seeking practical livelihood skills.'
+        'Youths (18–35 years) interested in baking, confectionery, or food business',
+        'Young entrepreneurs or graduates seeking hands-on skills to start a business ',
+        'Unemployed youths seeking self-reliance through vocational training',
+        'Youth-focused organizations supporting entrepreneurship',
+        'Government agencies and development partners interested in youth empowerment'
       ],
       mainImage: '/images/cooking_chefs.png',
       thumbnailImage: '/images/chef_small.png',
@@ -29,14 +37,19 @@ export default function Home() {
     {
       id: 'youth_migration',
       title: 'Youth Migration Awareness Programme',
-      background: 'The Youth Migration Awareness & Management Programme seeks to address irregular migration challenges by educating young people on safe migration pathways, risks of irregular migration, and opportunities for empowerment within Nigeria.',
+      background: 'he Youth Migration Awareness & Management Programme seeks to address irregular\n' +
+          '                        migration challenges by educating young people on safe migration pathways, risks of irregular\n' +
+          '                        migration, and opportunities for empowerment within Nigeria. It also strengthens collaboration\n' +
+          '                        among migration management agencies and youth groups.',
       objectives: [
         'To educate Nigerian youth on safe migration pathways and the risks of irregular migration.',
         'To provide information on opportunities for empowerment within Nigeria.'
       ],
       targetAudience: [
         'Youths aged 18–35, particularly in migration-prone communities.',
-        'Youth development professionals and migration stakeholders.'
+        'Youth development professionals.',
+        'Migration stakeholders (IOM, NAPTIP, NDLEA, Immigration Services, Embassies).',
+        'CSOs and NGOs working on migration and human trafficking'
       ],
       mainImage: '/images/students.png',
       thumbnailImage: '/images/students.png',
@@ -45,14 +58,19 @@ export default function Home() {
     {
       id: 'national_youth',
       title: 'National Youth Conference',
-      background: 'The National Youth Conference brings together young leaders from across Nigeria to discuss pressing issues affecting youth and develop actionable solutions.',
+      background: 'The National Youth Policy Validation Workshop provides a platform for stakeholders to review\n' +
+          '                        and validate the revised National Youth Policy. It ensures inclusivity, stakeholder input, and\n' +
+          '                        alignment of the policy with current realities facing Nigerian youths.',
       objectives: [
         'To provide a platform for youth to voice their concerns and ideas.',
         'To develop actionable solutions to challenges facing Nigerian youth.'
       ],
       targetAudience: [
-        'Youth leaders and advocates aged 18-35.',
-        'Students and young professionals interested in youth development.'
+        'Youth development stakeholders.',
+        'Government representatives (MDAs, State Ministries).',
+        'Civil Society Organisations (CSOs/NGOs).',
+        'Development partners and donor agencies',
+        'Private sector organisations with youth-related initiatives',
       ],
       mainImage: '/images/corpers.png',
       thumbnailImage: '/images/corpers.png',
@@ -61,14 +79,20 @@ export default function Home() {
     {
       id: 'african_youth',
       title: 'African Youth Conference',
-      background: 'The African Youth Conference is a continental platform that brings together young Africans to discuss and address challenges facing the continent.',
+      background: 'African/National Youth Day is commemorated annually to celebrate the contributions of youths\n' +
+          '                        to national and continental development. The programme creates awareness of youth issues,\n' +
+          '                        showcases achievements, and provides a platform for engagement between youth,\n' +
+          '                        government, and stakeholders',
       objectives: [
         'To foster collaboration among young Africans.',
         'To develop innovative solutions to African challenges.'
       ],
       targetAudience: [
-        'Young Africans aged 18-35 from across the continent.',
-        'Youth-led organizations and initiatives.'
+        'Nigerian youths aged 18-35.',
+        'Youth development professionals.',
+        'Youth organizations and networks.',
+        'Development partners, CSOs, and private sector actors.',
+        'Government officials and policymakers.',
       ],
       mainImage: '/images/speaker.png',
       thumbnailImage: '/images/speaker.png',
@@ -225,6 +249,11 @@ export default function Home() {
                       </Link>
                     </div>
                   </div>
+
+                  {/* Date display */}
+                  <div className="flex justify-end mt-2">
+                    <p className="text-black text-sm font-bold">Date: 02/11/2025</p>
+                  </div>
                 </div>
 
                 {/* Navigation buttons */}
@@ -275,7 +304,7 @@ export default function Home() {
 
             {/* Other Programs Section */}
           <div className={'flex flex-col w-full items-center justify-center px-8'}>
-            <h3 className={'text-center text-xl md:text-xl text-[#277B12] font-semibold my-7'}>Other Programs</h3>
+            <h3 className={'text-center text-xl md:text-xl text-[#277B12] font-semibold my-7'}>Upcoming Programs</h3>
 
             <div className={'w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16'}>
               <div className={'h-[250px] px-4 py-4 flex flex-col justify-center items-center shadow-2xl rounded-md'}>

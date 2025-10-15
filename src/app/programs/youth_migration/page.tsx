@@ -72,23 +72,8 @@ export default function YouthMigrationPage() {
                 <h2 className={'font-semibold text-xl'}>4. Youth Migration Awareness and Management Programme (YMAMP)</h2>
                 <h2 className={'font-medium text-sm text-gray-500'}>5. National Youth Mental Health Conference</h2>
             </div>
-            <div className={'flex flex-row items-center justify-evenly px-3'}>
+            <div className={'flex flex-row items-center justify-evenly px-3 mt-10'}>
                 <form onSubmit={handleSubmit} className={'w-[700px] gap-y-3.5'}>
-                    <p className={'text-black text-lg my-3'}>About and T/Cs</p>
-                    <p className={'text-black text-lg'}>The Youth Migration Awareness & Management Programme seeks to address irregular
-                        migration challenges by educating young people on safe migration pathways, risks of irregular
-                        migration, and opportunities for empowerment within Nigeria. It also strengthens collaboration
-                        among migration management agencies and youth groups.
-                    </p>
-                    <p className={'text-black text-xl mt-3'}>This programs is for</p>
-                    <ul className={'list-disc text-black leading-8 text-lg mt-2'}>
-                        <li>Youths aged 18–35, particularly in migration-prone communities</li>
-                        <li>Youth development professionals.</li>
-                        <li>Migration stakeholders (IOM, NAPTIP, NDLEA, Immigration Services, Embassies).</li>
-                        <li>CSOs and NGOs working on migration and human trafficking</li>
-                        <li>Law enforcement and security agencies</li>
-                        <li>Development partners and international organisations.</li>
-                    </ul>
                     {/* Youth Professional field */}
                     <TextField
                         type="text"
