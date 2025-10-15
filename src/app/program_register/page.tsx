@@ -7,11 +7,21 @@ import {useRouter} from "next/navigation";
 
 export default function RegisterPage() {
 
-    const  router = useRouter();
+    const router = useRouter();
+    const [programId, setProgramId] = useState('');
 
-    const routToBakeprenuer = () => {
-        router.push('/programs/bakeprenuer');
+    const routeToProgramPage = () => {
+        router.push(`/programs/${programId || 'bakeprenuer'}`);
     }
+
+    // Set the program from URL parameter when component mounts
+    React.useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const programParam = searchParams.get('program');
+        if (programParam) {
+            setProgramId(programParam);
+        }
+    }, []);
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -252,9 +262,9 @@ export default function RegisterPage() {
                         <h2 className={'text-[#F9E79F] text-xl font-bold text-center my-4 justify-self-start'}> Need Help? </h2>
                         <Link href={'/'} className={'text-white text-lg font-medium text-center underline'}>Get Assistance</Link>
                     </div>
-                    {/* Login button */}
+                    {/* Next button */}
                     <button
-                        onClick={routToBakeprenuer}
+                        onClick={routeToProgramPage}
                         type="submit"
                         className={'w-24 justify-end bg-[#277B12] text-white py-4 px-4 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors'}
                     >

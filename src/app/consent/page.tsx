@@ -6,11 +6,21 @@ import {useRouter} from "next/navigation";
 
 export default function ConsentPage() {
 
-    const  router = useRouter();
+    const router = useRouter();
+    const [programId, setProgramId] = useState('');
 
-    const routToBakeprenuer = () => {
-        router.push('/program_register');
+    const routToProgramRegister = () => {
+        router.push(`/program_register?program=${programId}`);
     }
+
+    // Set the program from URL parameter when component mounts
+    React.useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const programParam = searchParams.get('program');
+        if (programParam) {
+            setProgramId(programParam);
+        }
+    }, []);
 
     const [agreement, setAgreement] = useState(false);
 
@@ -75,7 +85,7 @@ export default function ConsentPage() {
                         </div>
                     </div>
                     <button
-                        onClick={routToBakeprenuer}
+                        onClick={routToProgramRegister}
                         type="submit"
                         className={'w-24 justify-end bg-[#277B12] text-white py-4 px-4 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors'}
                     >

@@ -8,7 +8,12 @@ import {useRouter} from "next/navigation";
 export default function TermsPage() {
     const router = useRouter();
     const navigateToRegisterPage = () => {
-        router.push('/program_info');
+        // Get the program parameter from the URL
+        const searchParams = new URLSearchParams(window.location.search);
+        const program = searchParams.get('program');
+
+        // Navigate to register page with program parameter
+        router.push(`/register?program=${program || ''}`);
     }
   return (
       <div className={'w-screen h-screen pt-1'}>

@@ -7,13 +7,22 @@ import {useRouter} from "next/navigation";
 
 export default function ProgramInfo() {
 
-    const  router = useRouter();
+    const router = useRouter();
 
-    const routToBakeprenuer = () => {
-        router.push('/consent');
+    const routToConsent = () => {
+        router.push(`/consent?program=${program}`);
     }
 
     const [program, setProgram] = useState('');
+
+    // Set the program from URL parameter when component mounts
+    React.useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const programParam = searchParams.get('program');
+        if (programParam) {
+            setProgram(programParam);
+        }
+    }, []);
     const [expectations, setExpectations] = useState('');
     const [knowledge, setKnowledge] = useState('');
     const [organisation, setOrganisation] = useState('');
@@ -168,9 +177,9 @@ export default function ProgramInfo() {
                         <h2 className={'text-[#F9E79F] text-xl font-bold text-center my-4 justify-self-start'}> Need Help? </h2>
                         <Link href={'/'} className={'text-white text-lg font-medium text-center underline'}>Get Assistance</Link>
                     </div>
-                    {/* Login button */}
+                    {/* Next button */}
                     <button
-                        onClick={routToBakeprenuer}
+                        onClick={routToConsent}
                         type="submit"
                         className={'w-24 justify-end bg-[#277B12] text-white py-4 px-4 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors'}
                     >

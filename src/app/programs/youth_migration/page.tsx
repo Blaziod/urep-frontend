@@ -12,7 +12,7 @@ export default function YouthMigrationPage() {
         router.back();
     }
     const routeToNextPage = () => {
-        router.push('/programs/youth_mental');
+        router.push('/success');
     }
 
     const [professional, setProfessional] = useState('');

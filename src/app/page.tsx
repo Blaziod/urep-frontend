@@ -218,7 +218,7 @@ export default function Home() {
                         />
                       </div>
                       <Link 
-                        href={currentProgram.registerLink}
+                        href={`/terms?program=${currentProgram.id}`}
                         className={'text-center text-base md:text-lg text-[#277B12] font-semibold mt-4 rounded-lg bg-white px-6 py-3 hover:bg-gray-100 transition-colors shadow-md'}
                       >
                         Register Now

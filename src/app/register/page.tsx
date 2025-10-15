@@ -12,7 +12,7 @@ export default function RegisterPage() {
     const router = useRouter();
     // Function to handle opening the terms modal
     const navigateToProgramInfo = () => {
-        router.push('/program_info');
+        router.push(`/program_info?program=${programme}`);
     }
 
     const openTermsModal = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -43,6 +43,15 @@ export default function RegisterPage() {
     const [lga, setLga] = useState('');
     const [agreeProgramTerms, setAgreeProgramTerms] = useState(false);
     const [showTermsModal, setShowTermsModal] = useState(false);
+
+    // Set the program from URL parameter when component mounts
+    React.useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const programParam = searchParams.get('program');
+        if (programParam) {
+            setProgramme(programParam);
+        }
+    }, []);
 
     const programmeOptions= [
         { value: 'african_youth', label: 'African/National Youth Day 2025' },

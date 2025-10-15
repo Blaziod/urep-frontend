@@ -12,7 +12,7 @@ export default function AfricanYouthPage() {
         router.back();
     }
     const routeToNextPage = () => {
-        router.push('/programs/youth_migration');
+        router.push('/success');
     }
 
     const [professional, setProfessional] = useState('');

@@ -12,7 +12,7 @@ export default function NationalYouthPage() {
         router.back();
     }
     const routeToNextPage = () => {
-        router.push('/programs/african_youth');
+        router.push('/success');
     }
 
     const [stakeholder, setStakeholder] = useState('');

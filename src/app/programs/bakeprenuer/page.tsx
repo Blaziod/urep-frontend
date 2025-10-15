@@ -12,7 +12,7 @@ export default function BakeprenuerPage() {
         router.back();
     }
     const routeToNextPage = () => {
-        router.push('/programs/national_youth');
+        router.push('/success');
     }
 
     const [knowledge, setKnowledge] = useState('');
