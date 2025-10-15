@@ -43,6 +43,7 @@ export default function RegisterPage() {
     const [lga, setLga] = useState('');
     const [agreeProgramTerms, setAgreeProgramTerms] = useState(false);
     const [showTermsModal, setShowTermsModal] = useState(false);
+    const [organisation, setOrganisation] = useState('');
 
     // Set the program from URL parameter when component mounts
     React.useEffect(() => {
@@ -182,6 +183,16 @@ export default function RegisterPage() {
                                 </label>
                             </div>
                         )}
+                        {/* Organisation field */}
+                        <TextField
+                            type="text"
+                            label="Organisation"
+                            placeholder="Which organisation are you from?"
+                            value={organisation}
+                            onChange={setOrganisation}
+                            required
+                            id="organisation"
+                        />
                         {/* NIN field */}
                         <TextField
                             type="text"

@@ -50,7 +50,7 @@ export default function TermsPage() {
                   onClick={navigateToRegisterPage}
                   className={'w-full sm:w-[30%] bg-[#277B12] text-white py-4 px-4 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors'}
               >
-                  Continue
+                  I agree
               </button>
           </div>
 

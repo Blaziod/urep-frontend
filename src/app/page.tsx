@@ -245,7 +245,6 @@ export default function Home() {
 
               {/* Thumbnail Navigation */}
               <div className={'w-full lg:w-[20%] flex flex-col'}>
-                <h3 className={'text-center text-lg font-semibold text-[#277B12] mb-3'}>Active Programs</h3>
                 <div className={'flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto'}>
                   {programsData.map((program, index) => (
                     <div 
