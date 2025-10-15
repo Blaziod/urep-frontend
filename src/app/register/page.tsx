@@ -2,7 +2,7 @@
 import FooterBar from "@/components/FooterBar";
 import Image from "next/image";
 import Link from "next/link";
-import React, {useState, useMemo} from "react";
+import React, {useMemo, useState} from "react";
 import {TextField} from "@/components";
 import {useRouter} from "next/navigation";
 
@@ -22,7 +22,6 @@ export default function RegisterPage() {
     const [gender, setGender] = useState('');
     const [state, setState] = useState('');
     const [lga, setLga] = useState('');
-    const [agreeTerms, setAgreeTerms] = useState(false);
     const [agreeProgramTerms, setAgreeProgramTerms] = useState(false);
 
     const programmeOptions= [
@@ -100,7 +99,7 @@ export default function RegisterPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // Handle login logic here
-        console.log('Login attempt with:', { nin, programme, name, email, password, dob, gender, state, lga, agreeProgramTerms, agreeTerms });
+        console.log('Login attempt with:', { nin, programme, name, email, password, dob, gender, state, lga, agreeProgramTerms });
     };
 
     return (
@@ -237,21 +236,6 @@ export default function RegisterPage() {
                             required
                             id="lga"
                         />
-
-                        <div className={'flex justify-between items-center mb-6 mt-4'}>
-                            <div className={'flex items-center'}>
-                                <input
-                                    type="checkbox"
-                                    id="remember-me"
-                                    checked={agreeTerms}
-                                    onChange={(e) => setAgreeTerms(e.target.checked)}
-                                    className={'mr-2 h-4 w-4 text-[#277B12] focus:ring-[#277B12] border-gray-300 rounded'}
-                                />
-                                <label htmlFor="remember-me" className={'text-sm text-black font-medium'}>
-                                    Read and accept the <a href={'/terms'} className={'text-[#277B12] hover:underline font-semibold'}>Terms and Conditions</a> of this programme to continue
-                                </label>
-                            </div>
-                        </div>
                         {/* Continue button move to the right */}
                         <button
                             type="submit"
