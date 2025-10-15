@@ -2,7 +2,7 @@
 import FooterBar from "@/components/FooterBar";
 import Image from "next/image";
 import Link from "next/link";
-import React, {useState} from "react";
+import React, {useState, useMemo} from "react";
 import {TextField} from "@/components";
 import {useRouter} from "next/navigation";
 
@@ -23,6 +23,20 @@ export default function RegisterPage() {
     const [state, setState] = useState('');
     const [lga, setLga] = useState('');
     const [agreeTerms, setAgreeTerms] = useState(false);
+    const [agreeProgramTerms, setAgreeProgramTerms] = useState(false);
+
+    const programmeOptions= [
+        { value: 'african_youth', label: 'African/National Youth Day 2025' },
+        { value: 'bakeprenuer', label: 'Bakeprenuer Nigeria' },
+        { value: 'national_youth', label: 'National Youth Policy Validation Workshop' },
+    ];
+
+    // Get the selected program name
+    const selectedProgramName = useMemo(() => {
+        if (!programme) return '';
+        const selectedProgram = programmeOptions.find(option => option.value === programme);
+        return selectedProgram ? selectedProgram.label : '';
+    }, [programme]);
 
     const genderOptions= [
         { value: 'male', label: 'Male' },
@@ -83,16 +97,10 @@ export default function RegisterPage() {
         { value: 'Akoko', label: 'Akoko' },
     ]
 
-    const programmeOptions= [
-        { value: 'african_youth', label: 'African/National Youth Day 2025' },
-        { value: 'bakeprenuer', label: 'Bakeprenuer Nigeria' },
-        { value: 'national_youth', label: 'National Youth Policy Validation Workshop' },
-    ];
-
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // Handle login logic here
-        console.log('Login attempt with:', { nin, programme, name, email, password, dob, gender, state, lga });
+        console.log('Login attempt with:', { nin, programme, name, email, password, dob, gender, state, lga, agreeProgramTerms, agreeTerms });
     };
 
     return (
@@ -131,6 +139,21 @@ export default function RegisterPage() {
                             required
                             id="programme"
                         />
+                        {programme && (
+                            <div className={'flex items-center mt-2 mb-4'}>
+                                <input
+                                    type="checkbox"
+                                    id="program-terms"
+                                    checked={agreeProgramTerms}
+                                    onChange={(e) => setAgreeProgramTerms(e.target.checked)}
+                                    className={'mr-2 h-4 w-4 text-[#277B12] focus:ring-[#277B12] border-gray-300 rounded'}
+                                    required
+                                />
+                                <label htmlFor="program-terms" className={'text-sm text-black font-medium'}>
+                                    By selecting this program, you agree to the <a href={'/terms'} className={'text-[#277B12] hover:underline font-semibold'}>Terms and Conditions</a> of the {selectedProgramName}.
+                                </label>
+                            </div>
+                        )}
                         {/* NIN field */}
                         <TextField
                             type="text"
