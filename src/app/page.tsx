@@ -77,7 +77,7 @@ export default function Home() {
             <div className={'flex flex-col lg:flex-row items-center gap-3 lg:gap-x-5 xl:gap-x-10'}>
               <div className={'flex-col justify-start w-full lg:w-1/2 pl-16'}>
                 <h1 className={'text-white text-lg md:text-xl lg:text-2xl font-semibold '}>Background</h1>
-                <p className={'text-gray-500 font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>The Federal Ministry of Youth Development,
+                <p className={'text-black font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>The Federal Ministry of Youth Development,
                   is introducing Bakeprenuer Nigeria a Special Skills Training Programme in
                   Modern Baking and Confectionery Technologies for youth across all the six
                   geo-political zones.
@@ -86,15 +86,15 @@ export default function Home() {
                 <hr className="my-1"/>
                 <h1 className={'text-white text-lg md:text-xl lg:text-2xl font-semibold'}>Objective</h1>
                 <ul className="pl-2">
-                  <li className={'text-gray-500 font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>To provide Nigerian youths with modern baking and confectionery skills aligned with industry standards.</li>
-                  <li className={'text-gray-500 font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>To promote entrepreneurship and self-reliance through practical, hands-on learning.</li>
+                  <li className={'text-black font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>To provide Nigerian youths with modern baking and confectionery skills aligned with industry standards.</li>
+                  <li className={'text-black font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>To promote entrepreneurship and self-reliance through practical, hands-on learning.</li>
                 </ul>
                 <h3 className={'justify-self-end text-sm md:text-base text-white font-semibold'}>Learn More</h3>
                 <hr className="my-1"/>
                 <h1 className={'text-white text-lg md:text-xl lg:text-2xl font-semibold'}>Who Should Attend</h1>
                 <ul className="pl-2">
-                  <li className={'text-gray-500 font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>Unemployed and underemployed youths aged 18–35 years.</li>
-                  <li className={'text-gray-500 font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>Young school leavers and graduates seeking practical livelihood skills.</li>
+                  <li className={'text-black font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>Unemployed and underemployed youths aged 18–35 years.</li>
+                  <li className={'text-black font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>Young school leavers and graduates seeking practical livelihood skills.</li>
                 </ul>
                 <h3 className={'justify-self-end text-sm md:text-base text-white font-semibold'}>Learn More</h3>
               </div>
