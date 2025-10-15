@@ -1,13 +1,113 @@
 'use client';
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {FaChevronRight, FaSearch} from "react-icons/fa";
+import {FaChevronLeft, FaChevronRight, FaSearch} from "react-icons/fa";
 import {FaSliders, FaSort} from "react-icons/fa6";
 import FooterBar from "@/components/FooterBar";
 
 export default function Home() {
+  // Program data for the carousel
+  const programsData = [
+    {
+      id: 'bakeprenuer',
+      title: 'Bakeprenuer Nigeria',
+      background: 'The Federal Ministry of Youth Development, is introducing Bakeprenuer Nigeria a Special Skills Training Programme in Modern Baking and Confectionery Technologies for youth across all the six geo-political zones.',
+      objectives: [
+        'To provide Nigerian youths with modern baking and confectionery skills aligned with industry standards.',
+        'To promote entrepreneurship and self-reliance through practical, hands-on learning.'
+      ],
+      targetAudience: [
+        'Unemployed and underemployed youths aged 18–35 years.',
+        'Young school leavers and graduates seeking practical livelihood skills.'
+      ],
+      mainImage: '/images/cooking_chefs.png',
+      thumbnailImage: '/images/chef_small.png',
+      registerLink: '/register?program=bakeprenuer'
+    },
+    {
+      id: 'youth_migration',
+      title: 'Youth Migration Awareness Programme',
+      background: 'The Youth Migration Awareness & Management Programme seeks to address irregular migration challenges by educating young people on safe migration pathways, risks of irregular migration, and opportunities for empowerment within Nigeria.',
+      objectives: [
+        'To educate Nigerian youth on safe migration pathways and the risks of irregular migration.',
+        'To provide information on opportunities for empowerment within Nigeria.'
+      ],
+      targetAudience: [
+        'Youths aged 18–35, particularly in migration-prone communities.',
+        'Youth development professionals and migration stakeholders.'
+      ],
+      mainImage: '/images/students.png',
+      thumbnailImage: '/images/students.png',
+      registerLink: '/register?program=youth_migration'
+    },
+    {
+      id: 'national_youth',
+      title: 'National Youth Conference',
+      background: 'The National Youth Conference brings together young leaders from across Nigeria to discuss pressing issues affecting youth and develop actionable solutions.',
+      objectives: [
+        'To provide a platform for youth to voice their concerns and ideas.',
+        'To develop actionable solutions to challenges facing Nigerian youth.'
+      ],
+      targetAudience: [
+        'Youth leaders and advocates aged 18-35.',
+        'Students and young professionals interested in youth development.'
+      ],
+      mainImage: '/images/corpers.png',
+      thumbnailImage: '/images/corpers.png',
+      registerLink: '/register?program=national_youth'
+    },
+    {
+      id: 'african_youth',
+      title: 'African Youth Conference',
+      background: 'The African Youth Conference is a continental platform that brings together young Africans to discuss and address challenges facing the continent.',
+      objectives: [
+        'To foster collaboration among young Africans.',
+        'To develop innovative solutions to African challenges.'
+      ],
+      targetAudience: [
+        'Young Africans aged 18-35 from across the continent.',
+        'Youth-led organizations and initiatives.'
+      ],
+      mainImage: '/images/speaker.png',
+      thumbnailImage: '/images/speaker.png',
+      registerLink: '/register?program=african_youth'
+    }
+  ];
+
+  // State for the current program index
+  const [currentProgramIndex, setCurrentProgramIndex] = useState(0);
+  const currentProgram = programsData[currentProgramIndex];
+
+  // Function to navigate to the next program
+  const nextProgram = () => {
+    setCurrentProgramIndex((prevIndex) => 
+      prevIndex === programsData.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  // Function to navigate to the previous program
+  const prevProgram = () => {
+    setCurrentProgramIndex((prevIndex) => 
+      prevIndex === 0 ? programsData.length - 1 : prevIndex - 1
+    );
+  };
+
+  // Function to navigate to a specific program
+  const goToProgram = (index: React.SetStateAction<number>) => {
+    setCurrentProgramIndex(index);
+  };
+
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextProgram();
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval); // Clean up on unmount
+  }, []);
+
   return (
       <div className={'w-screen'}>
         <div className={''}>
@@ -24,10 +124,6 @@ export default function Home() {
                 <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>Youth Policy</Link>
                 <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>Privacy Policy</Link>
               </div>
-            </div>
-            <div className="flex gap-2">
-              <Link href="/login" className={'bg-white text-black hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:text-md px-3 sm:px-4 py-2 sm:py-2.5 text-center'}>Login</Link>
-              <Link href={'/register'} className={'bg-[#277B12] text-white hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:text-md px-3 sm:px-4 py-2 sm:py-2.5 text-center border-white border-2'}>Register</Link>
             </div>
           </div>
 
@@ -48,10 +144,10 @@ export default function Home() {
           {/* Programs Sections */}
           <div className={'w-full bg-[#277B12]  overflow-hidden'}>
             <div className={'flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4'}>
-              <Image src={'/images/chef_small.png'} alt={'Chefs'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'}/>
-              <Image src={'/images/corpers.png'} alt={'Chefs'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
-              <Image src={'/images/students.png'} alt={'Chefs'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
-              <Image src={'/images/speaker.png'} alt={'Chefs'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
+              <Image src={'/images/chef_small.png'} alt={'bakeprenuer'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'}/>
+              <Image src={'/images/corpers.png'} alt={'national_youth'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
+              <Image src={'/images/students.png'} alt={'youth_migration'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
+              <Image src={'/images/speaker.png'} alt={'african_youth'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
             </div>
           </div>
 
@@ -69,42 +165,112 @@ export default function Home() {
           </div>
 
 
-          {/*Program specific sections*/}
-          {/* Bakeprenuer Nigeria */}
-          {/* TODO: Make section like a carousel, with a button to scroll to next/prev program. Each program should have a title, description, image, and a link to the program page */}
-          <div className={'flex flex-col justify-center bg-gradient-to-b from-[#277B12] to-[#F9E79F] my-6 md:mt-10 py-2 px-4 h-[3%] w-[95%] mx-auto'}>
-            <h2 className={'font-semibold text-xl text-center text-black mb-2 md:mb-3'}>Bakeprenuer Nigeria</h2>
-            <div className={'flex flex-col lg:flex-row items-center gap-3 lg:gap-x-5 xl:gap-x-10'}>
-              <div className={'flex-col justify-start w-full lg:w-1/2 pl-16'}>
-                <h1 className={'text-white text-lg md:text-xl lg:text-2xl font-semibold '}>Background</h1>
-                <p className={'text-black font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>The Federal Ministry of Youth Development,
-                  is introducing Bakeprenuer Nigeria a Special Skills Training Programme in
-                  Modern Baking and Confectionery Technologies for youth across all the six
-                  geo-political zones.
-                </p>
-                <h3 className={'justify-self-end text-sm md:text-base text-white font-semibold'}>Learn More</h3>
-                <hr className="my-1"/>
-                <h1 className={'text-white text-lg md:text-xl lg:text-2xl font-semibold'}>Objective</h1>
-                <ul className="pl-2">
-                  <li className={'text-black font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>To provide Nigerian youths with modern baking and confectionery skills aligned with industry standards.</li>
-                  <li className={'text-black font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>To promote entrepreneurship and self-reliance through practical, hands-on learning.</li>
-                </ul>
-                <h3 className={'justify-self-end text-sm md:text-base text-white font-semibold'}>Learn More</h3>
-                <hr className="my-1"/>
-                <h1 className={'text-white text-lg md:text-xl lg:text-2xl font-semibold'}>Who Should Attend</h1>
-                <ul className="pl-2">
-                  <li className={'text-black font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>Unemployed and underemployed youths aged 18–35 years.</li>
-                  <li className={'text-black font-normal text-xs md:text-sm text-wrap leading-4 md:leading-5'}>Young school leavers and graduates seeking practical livelihood skills.</li>
-                </ul>
-                <h3 className={'justify-self-end text-sm md:text-base text-white font-semibold'}>Learn More</h3>
-              </div>
-              <div className={'flex flex-col justify-center items-center w-full'}>
-                <div className={'w-[57%] object-cover'}>
-                  <Image src={'/images/cooking_chefs.png'} alt={'Bakeprenuer'} width={450} height={80} className={'rounded-lg w-full h-[350px]'}/>
+          {/*Active programs sections*/}
+          <div className={'flex flex-col my-6 md:mt-6 w-[95%] mx-auto'}>
+            <h2 className={'font-semibold text-xl text-center text-[#277B12] mb-4 md:mb-5'}>Active Programs</h2>
+
+            <div className={'flex flex-col lg:flex-row gap-6'}>
+              {/* Program Card Carousel */}
+              <div className={'flex-1 relative'}>
+                <div className={'flex flex-col justify-center bg-gradient-to-b from-[#277B12] to-[#F9E79F] rounded-lg shadow-xl p-6 h-full'}>
+                  <h2 className={'font-semibold text-xl text-center text-black mb-3 md:mb-4'}>{currentProgram.title}</h2>
+                  <div className={'flex flex-col lg:flex-row items-center gap-4'}>
+                    <div className={'flex-col justify-start w-full lg:w-1/2'}>
+                      <h1 className={'text-white text-lg md:text-xl font-semibold'}>Background</h1>
+                      <p className={'text-black font-normal text-xs md:text-sm text-wrap leading-5 mb-2'}>
+                        {currentProgram.background}
+                      </p>
+                      <h3 className={'text-sm md:text-base text-white font-semibold'}>Learn More</h3>
+
+                      <hr className="my-2"/>
+
+                      <h1 className={'text-white text-lg md:text-xl font-semibold'}>Objectives</h1>
+                      <ul className="pl-2 mb-2">
+                        {currentProgram.objectives.map((objective, index) => (
+                          <li key={index} className={'text-black font-normal text-xs md:text-sm text-wrap leading-5'}>
+                            {objective}
+                          </li>
+                        ))}
+                      </ul>
+                      <h3 className={'text-sm md:text-base text-white font-semibold'}>Learn More</h3>
+
+                      <hr className="my-2"/>
+
+                      <h1 className={'text-white text-lg md:text-xl font-semibold'}>Who Should Attend</h1>
+                      <ul className="pl-2 mb-2">
+                        {currentProgram.targetAudience.map((audience, index) => (
+                          <li key={index} className={'text-black font-normal text-xs md:text-sm text-wrap leading-5'}>
+                            {audience}
+                          </li>
+                        ))}
+                      </ul>
+                      <h3 className={'text-sm md:text-base text-white font-semibold'}>Learn More</h3>
+                    </div>
+
+                    <div className={'flex flex-col justify-center items-center w-full lg:w-1/2'}>
+                      <div className={'w-full max-w-[350px] object-cover'}>
+                        <Image 
+                          src={currentProgram.mainImage} 
+                          alt={currentProgram.title} 
+                          width={450} 
+                          height={350} 
+                          className={'rounded-lg w-full h-[300px] object-cover shadow-md'}
+                        />
+                      </div>
+                      <Link 
+                        href={currentProgram.registerLink}
+                        className={'text-center text-base md:text-lg text-[#277B12] font-semibold mt-4 rounded-lg bg-white px-6 py-3 hover:bg-gray-100 transition-colors shadow-md'}
+                      >
+                        Register Now
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <h3 className={'text-center text-base md:text-lg text-[#277B12] font-semibold mt-3 rounded-lg bg-white px-6 py-3'}>Register Now</h3>
+
+                {/* Navigation buttons */}
+                <button 
+                  onClick={prevProgram}
+                  className={'absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-2 shadow-md hover:bg-white transition-colors'}
+                >
+                  <FaChevronLeft size={24} color={'#277B12'} />
+                </button>
+
+                <button 
+                  onClick={nextProgram}
+                  className={'absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-2 shadow-md hover:bg-white transition-colors'}
+                >
+                  <FaChevronRight size={24} color={'#277B12'} />
+                </button>
               </div>
-                <FaChevronRight width={200} height={200} color={'#277B12'} className={'text-white text-6xl cursor-pointer'}/>
+
+              {/* Thumbnail Navigation */}
+              <div className={'w-full lg:w-[20%] flex flex-col'}>
+                <h3 className={'text-center text-lg font-semibold text-[#277B12] mb-3'}>Active Programs</h3>
+                <div className={'flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto'}>
+                  {programsData.map((program, index) => (
+                    <div 
+                      key={program.id}
+                      onClick={() => goToProgram(index)}
+                      className={`cursor-pointer transition-all duration-300 ${currentProgramIndex === index ? 'scale-105 ring-2 ring-[#277B12]' : 'opacity-80 hover:opacity-100'}`}
+                    >
+                      <div className={'relative'}>
+                        <Image 
+                          src={program.thumbnailImage} 
+                          alt={program.title} 
+                          width={200} 
+                          height={120} 
+                          className={'rounded-lg w-full h-[120px] object-cover shadow-md'}
+                        />
+                        <div className={'absolute inset-0 bg-black/40 rounded-lg flex items-end'}>
+                          <p className={'text-white text-sm font-medium p-2 truncate w-full'}>
+                            {program.title}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
