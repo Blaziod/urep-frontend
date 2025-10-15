@@ -5,12 +5,31 @@ import Link from "next/link";
 import React, {useMemo, useState} from "react";
 import {TextField} from "@/components";
 import {useRouter} from "next/navigation";
+import {FaTimes} from "react-icons/fa";
 
 export default function RegisterPage() {
 
     const router = useRouter();
-    const navigateToTerms = () => {
-        router.push('/terms');
+    // Function to handle opening the terms modal
+    const navigateToProgramInfo = () => {
+        router.push('/program_info');
+    }
+
+    const openTermsModal = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        setShowTermsModal(true);
+    }
+
+    // Function to handle accepting terms
+    const acceptTerms = () => {
+        setAgreeProgramTerms(true);
+        setShowTermsModal(false);
+    }
+
+    // Function to handle declining terms
+    const declineTerms = () => {
+        setAgreeProgramTerms(false);
+        setShowTermsModal(false);
     }
 
     const [nin, setNin] = useState('');
@@ -23,6 +42,7 @@ export default function RegisterPage() {
     const [state, setState] = useState('');
     const [lga, setLga] = useState('');
     const [agreeProgramTerms, setAgreeProgramTerms] = useState(false);
+    const [showTermsModal, setShowTermsModal] = useState(false);
 
     const programmeOptions= [
         { value: 'african_youth', label: 'African/National Youth Day 2025' },
@@ -149,7 +169,7 @@ export default function RegisterPage() {
                                     required
                                 />
                                 <label htmlFor="program-terms" className={'text-sm text-black font-medium'}>
-                                    By selecting this program, you agree to the <a href={'/terms'} className={'text-[#277B12] hover:underline font-semibold'}>Terms and Conditions</a> of the {selectedProgramName}.
+                                    By selecting this program, you agree to the <a href="#" onClick={openTermsModal} className={'text-[#277B12] hover:underline font-semibold'}>Terms and Conditions</a> of the {selectedProgramName}.
                                 </label>
                             </div>
                         )}
@@ -239,7 +259,7 @@ export default function RegisterPage() {
                         {/* Continue button move to the right */}
                         <button
                             type="submit"
-                            onClick={navigateToTerms}
+                            onClick={navigateToProgramInfo}
                             className={' bg-[#277B12] text-white font-semibold py-3 px-9 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors float-right disabled:opacity-50'}
                         >
                             Continue
@@ -248,6 +268,49 @@ export default function RegisterPage() {
                 </div>
             </div>
             <FooterBar/>
+
+            {/* Terms and Conditions Modal */}
+            {showTermsModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-lg shadow-lg w-full max-w-2xl">
+                        <div className="flex justify-between items-center p-4 border-b">
+                            <h2 className="text-xl font-bold text-gray-800">Terms and Conditions for {selectedProgramName}</h2>
+                            <button 
+                                onClick={() => setShowTermsModal(false)}
+                                className="text-gray-500 hover:text-gray-700"
+                            >
+                                <FaTimes size={20} />
+                            </button>
+                        </div>
+                        <div className="p-6 max-h-96 overflow-y-auto">
+                            <h3 className="font-semibold text-lg mb-4">Please read and accept the following terms:</h3>
+                            <ul className="list-disc pl-5 space-y-2 mb-4">
+                                <li>Make sure all information provided are accurate. Multiple registration by the same person is not allowed.</li>
+                                <li>This Program will be taken place in Ondo State</li>
+                                <li>Free transportation will be provided by the ministry from Headquarter everyday during the program</li>
+                                <li>This is a three day program.</li>
+                            </ul>
+                            <p className="text-sm text-gray-600 mt-4">
+                                By accepting these terms, you agree to abide by all the conditions specified for participation in {selectedProgramName}.
+                            </p>
+                        </div>
+                        <div className="flex justify-end space-x-4 p-4 border-t">
+                            <button
+                                onClick={declineTerms}
+                                className="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition-colors"
+                            >
+                                Decline
+                            </button>
+                            <button
+                                onClick={acceptTerms}
+                                className="px-4 py-2 bg-[#277B12] text-white rounded hover:bg-green-700 transition-colors"
+                            >
+                                Accept
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
