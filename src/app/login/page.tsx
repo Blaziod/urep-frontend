@@ -9,7 +9,7 @@ import {useRouter} from "next/navigation";
 export default function LoginPage() {
     const router = useRouter();
     const navigateToRegisterPage = () => {
-        router.push('/program_register');
+        router.push('/admin');
     }
 
     const [email, setEmail] = useState('');

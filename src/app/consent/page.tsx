@@ -9,7 +9,7 @@ export default function ConsentPage() {
     const  router = useRouter();
 
     const routToBakeprenuer = () => {
-        router.push('/admin');
+        router.push('/program_register');
     }
 
     const [agreement, setAgreement] = useState(false);
