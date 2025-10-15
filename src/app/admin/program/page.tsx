@@ -178,7 +178,7 @@ export default function ProgramStatistics() {
   };
 
   // Get current program data
-  // @ts-ignore
+  // @ts-expect-error
   const currentData = programData[selectedProgram];
 
   // Colors for charts
@@ -277,7 +277,7 @@ export default function ProgramStatistics() {
         {/* Demographics Chart */}
         <div className="bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-semibold mb-4">Participant Demographics (Age)</h3>
-          <div className="h-80">
+          <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -290,7 +290,7 @@ export default function ProgramStatistics() {
                   fill="#8884d8"
                   dataKey="value"
                 >
-                  {currentData.demographics.map((entry: any, index: number) => (
+                  {currentData.demographics.map((_entry: any, index: number) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
@@ -304,7 +304,7 @@ export default function ProgramStatistics() {
         {/* Geographical Distribution Chart */}
         <div className="bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-semibold mb-4">Geographical Distribution</h3>
-          <div className="h-80">
+          <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={currentData.geographical}
@@ -324,7 +324,7 @@ export default function ProgramStatistics() {
         {/* Registration Status Chart */}
         <div className="bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-semibold mb-4">Registration Status</h3>
-          <div className="h-80">
+          <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -350,7 +350,7 @@ export default function ProgramStatistics() {
         {/* Professional Status Chart */}
         <div className="bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-semibold mb-4">Professional Status</h3>
-          <div className="h-80">
+          <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
