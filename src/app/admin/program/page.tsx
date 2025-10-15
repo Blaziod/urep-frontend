@@ -178,7 +178,7 @@ export default function ProgramStatistics() {
   };
 
   // Get current program data
-  // @ts-expect-error
+  // @ts-expect-error: just expect error
   const currentData = programData[selectedProgram];
 
   // Colors for charts
@@ -290,7 +290,7 @@ export default function ProgramStatistics() {
                   fill="#8884d8"
                   dataKey="value"
                 >
-                  {currentData.demographics.map((_entry: any, index: number) => (
+                  {currentData.demographics.map((entry: string, index: number) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
