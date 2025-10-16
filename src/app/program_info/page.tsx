@@ -95,14 +95,14 @@ export default function ProgramInfo() {
             </div>
             <div className={'flex flex-row items-center justify-between px-3'}>
                 <h2 className={'font-semibold text-xl'}>1. SPECIFIC PROGRAM INFORMATION</h2>
-                <h2 className={'font-medium text-sm text-gray-500'}>2. Consent and Declaration</h2>
+                <h2 className={'font-medium text-sm text-gray-500'}>2. Program Specific Questions</h2>
             </div>
             <div className={'flex flex-row items-center justify-evenly px-3'}>
                 <form onSubmit={handleSubmit} className={'w-[700px] gap-y-3.5'}>
                     {/* Program field - static display */}
                     <div className="mb-4">
                         <label htmlFor="program" className="block mb-2 text-sm mt-3 font-medium text-black">
-                            Program you are registering for
+                            Selected Programme
                             <span className="text-red-500 ml-1">*</span>
                         </label>
                         <div className="w-full px-4 py-4 border border-gray-300 rounded-lg bg-gray-100">

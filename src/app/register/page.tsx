@@ -169,7 +169,7 @@ export default function RegisterPage() {
                         {/* Programme field - static display */}
                         <div className="mb-4">
                             <label htmlFor="programme" className="block mb-2 text-sm mt-3 font-medium text-black">
-                                What programme are you registering for?
+                                Selected Programme
                                 <span className="text-red-500 ml-1">*</span>
                             </label>
                             <div className="w-full px-4 py-4 border border-gray-300 rounded-lg bg-gray-100">
