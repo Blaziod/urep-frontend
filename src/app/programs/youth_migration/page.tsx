@@ -23,6 +23,7 @@ export default function YouthMigrationPage() {
     const [expectation, setExpectation] = useState('');
     const [previousParticipation, setPreviousParticipation] = useState('');
     const [benefitedFromFMYD, setBenefitedFromFMYD] = useState('');
+    const [youthFocused, setYouthFocused] = useState('');
 
     const embassyOptions = [
         { value: 'option1', label: 'Option 1' },
@@ -31,20 +32,27 @@ export default function YouthMigrationPage() {
     ];
 
     const advocacyOptions = [
-        { value: 'single', label: 'Single' },
-        { value: 'married', label: 'Married' },
-        { value: 'divorced', label: 'Divorced' },
-        { value: 'widowed', label: 'Widowed' },
+        { value: 'advocacy', label: 'Advocacy' },
+        { value: 'createawareness', label: 'Create Awareness' },
+        { value: 'youthclub', label: 'Start a Youth Club' },
+        { value: 'mentorship', label: 'Mentorship' },
+        { value: 'other', label: 'Other' },
     ];
 
     const sponsorshipOptions = [
+        { value: 'state_govt', label: 'State Government' },
+        { value: 'imo', label: 'IMO' },
+        { value: 'ngo', label: 'NGO' },
+        { value: 'EU', label: 'European Union' },
+        { value: 'embassy', label: 'Embassy' },
+        { value: 'naptip', label: 'NAPTIP' },
+        { value: 'ndlea', label: 'NDLEA' },
+        { value: 'nis', label: 'NIS' },
+        { value: 'fmle', label: 'FMLE' },
+    ];
+    const youthFocusedOptions = [
         { value: 'Yes', label: 'Yes' },
         { value: 'No', label: 'No' },
-    ];
-    const reasonOptions = [
-        { value: 'Education', label: 'Education' },
-        { value: 'Employment', label: 'Employment' },
-        { value: 'Other', label: 'Other' },
     ];
     const previousParticipationOptions = [
         { value: 'Yes', label: 'Yes' },
@@ -125,7 +133,7 @@ export default function YouthMigrationPage() {
                     {/* Sponsorship field */}
                     <TextField
                         type="dropdown"
-                        label="Are you being sponsored to attend this training"
+                        label="Your sponsoring organisation"
                         placeholder="Sponsorship"
                         value={sponsorship}
                         onChange={setSponsorship}
@@ -135,19 +143,29 @@ export default function YouthMigrationPage() {
                     />
                     {/* Reason field */}
                     <TextField
-                        type="dropdown"
-                        label="What is your reason for attending this training"
+                        type="text"
+                        label="Why do you want to participate in this programme?"
                         placeholder="Reason"
                         value={reason}
                         onChange={setReason}
-                        options={reasonOptions}
                         required
                         id="reason"
+                    />
+                    {/* Youth Focused field */}
+                    <TextField
+                        type="dropdown"
+                        label="Do you belong to any youth focused organisation?"
+                        placeholder="Youth Focused"
+                        value={youthFocused}
+                        onChange={setYouthFocused}
+                        required
+                        options={youthFocusedOptions}
+                        id="youth_focused"
                     />
                     {/* Expectation field */}
                     <TextField
                         type="text"
-                        label="What do you expect to gain from attending this training"
+                        label="What are your expectations from the programme?"
                         placeholder="Expectation"
                         value={expectation}
                         onChange={setExpectation}
@@ -157,7 +175,7 @@ export default function YouthMigrationPage() {
                     {/* Previous Participation field */}
                     <TextField
                         type="text"
-                        label="Have you previously participated in any FMYD program or similar program"
+                        label="Have you previously participated in any policy programme (not necessarily from this ministry)?"
                         placeholder="Previous Participation"
                         value={previousParticipation}
                         onChange={setPreviousParticipation}
@@ -168,7 +186,7 @@ export default function YouthMigrationPage() {
                     {/* Benefited from FMYD field */}
                     <TextField
                         type="dropdown"
-                        label="Have you benefited from the FMYD program"
+                        label="Have you participated in any FMYD program"
                         placeholder="Benefited from FMYD"
                         value={benefitedFromFMYD}
                         onChange={setBenefitedFromFMYD}
