@@ -16,7 +16,6 @@ export default function YouthMigrationPage() {
     }
 
     const [professional, setProfessional] = useState('');
-    const [organisation, setOrganisation] = useState('');
     const [outcome, setOutcome] = useState('');
     const [sponsorship, setSponsorship] = useState('');
     const [reason, setReason] = useState('');
@@ -25,11 +24,6 @@ export default function YouthMigrationPage() {
     const [benefitedFromFMYD, setBenefitedFromFMYD] = useState('');
     const [youthFocused, setYouthFocused] = useState('');
 
-    const embassyOptions = [
-        { value: 'option1', label: 'Option 1' },
-        { value: 'option2', label: 'Option 2' },
-        { value: 'option3', label: 'Option 3' },
-    ];
 
     const advocacyOptions = [
         { value: 'advocacy', label: 'Advocacy' },
@@ -68,7 +62,7 @@ export default function YouthMigrationPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // Handle login logic here
-        console.log('Login attempt with:', { professional, organisation, outcome });
+        console.log('Login attempt with:', { professional, outcome });
     };
     return (
         <div className={'w-screen'}>
@@ -106,19 +100,6 @@ export default function YouthMigrationPage() {
                         required
                         id="professional"
                     />
-
-                    {/* Embassy field */}
-                    <TextField
-                        type="dropdown"
-                        label="What organisation is nominating you"
-                        placeholder="Embassy"
-                        value={organisation}
-                        onChange={setOrganisation}
-                        required
-                        options={embassyOptions}
-                        id="embassy"
-                    />
-
                     {/* Advocay field */}
                     <TextField
                         type="dropdown"

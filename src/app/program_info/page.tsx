@@ -43,9 +43,6 @@ export default function ProgramInfo() {
         return selectedProgram ? selectedProgram.label : '';
     }, [program]);
 
-    const expectationOptions = [
-        { value: 'yes', label: 'Yes' },
-        { value: 'no', label: 'No' },    ];
 
     const organisationOptions = [
         { value: 'yes', label: 'Yes' },
@@ -107,12 +104,11 @@ export default function ProgramInfo() {
 
                     {/* Phone Nummber field */}
                     <TextField
-                        type="dropdown"
+                        type="text"
                         label="What are your expectations from the program?"
                         placeholder="Expectations"
                         value={expectations}
                         onChange={setExpectations}
-                        options={expectationOptions}
                         required
                         id="expectations"
                     />

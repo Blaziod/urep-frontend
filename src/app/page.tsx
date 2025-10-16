@@ -76,7 +76,7 @@ export default function Home() {
     },
     {
       id: 'african_youth',
-      title: 'African Youth Conference',
+      title: 'African/National Youth Day 2025',
       background: 'African/National Youth Day is commemorated annually to celebrate the contributions of youths\n' +
           '                        to national and continental development. The programme creates awareness of youth issues,\n' +
           '                        showcases achievements, and provides a platform for engagement between youth,\n' +
