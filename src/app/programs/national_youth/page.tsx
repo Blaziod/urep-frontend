@@ -19,23 +19,60 @@ export default function NationalYouthPage() {
     const [organization, setOrganization] = useState('');
     const [expectation, setExpectation] = useState('');
     const [application, setApplication] = useState('');
-    const [useOfOutcome, setUseOfOutcome] = useState('');
     const [previousEngagement, setPreviousEngagement] = useState('');
     const [benefitedFromFMYD, setBenefitedFromFMYD] = useState('');
     const [geopoliticalZone, setGeopoliticalZone] = useState('');
+    const [reason, setReason] = useState('');
+    const [youthFocusedOrganization, setYouthFocusedOrganization] = useState('');
+    const [urgentPriority, setUrgentPriority] = useState('');
 
     const embassyOptions = [
-        { value: 'option1', label: 'Option 1' },
-        { value: 'option2', label: 'Option 2' },
-        { value: 'option3', label: 'Option 3' },
+        { value: 'line_ministries', label: 'Line Ministries, Departments and Agencies' },
+        { value: 'state_ministry_of_youth_development', label: 'State Ministry of Youth Development' },
+        { value: 'development_partnership', label: 'Development Partnership' },
+        { value: 'youth_policy_coalition', label: 'Youth Policy Coalition' },
+        { value: 'youth_ngo', label: 'Youth NGO' },
+        { value: 'youth_cso', label: 'Youth CSO' },
+        {value: 'Private_Sector', label: 'Private Sector'},
+        {value: 'academic_institution', label: 'Academic Institution'},
+        {value: 'research_institution', label: 'Research Institution'},
+        {value: 'media_house', label: 'Media House'},
+        {value: 'others', label: 'Others'},
     ];
 
-    const bakingBusinessOptions = [
+    const useOfOutcomeOptions = [
+        { value: 'advocacy', label: 'Advocacy' },
+        { value: 'community_development', label: 'Community Development' },
+        { value: 'networking', label: 'Networking with other youth stakeholders' },
+        { value: 'strengthen_collaboration', label: 'Strengthen Collaboration between government and youth' },
+        { value: 'other', label: 'Other' },
+    ];
+
+    const previousEngagementOptions = [
         { value: 'yes', label: 'Yes' },
         { value: 'no', label: 'No' },
     ];
 
+    const geographicalLocationOptions = [
+        { value: 'North Central', label: 'North Central' },
+        { value: 'North East', label: 'North East' },
+        { value: 'North West', label: 'North West' },
+        { value: 'South East', label: 'South East' },
+        { value: 'South South', label: 'South South' },
+        { value: 'South West', label: 'South West' },
+    ];
 
+    const urgentPriorityOptions = [
+        {value: 'employment_and_job_creation', label: 'Employment and Job Creation'},
+        {value: 'education', label: 'Education'},
+        {value: 'health', label: 'Health'},
+        {value: 'political_participation', label: 'Political Participation'},
+        {value: 'digital_transformation', label: 'Digital Transformation'},
+        {value: 'gender_equality', label: 'Gender Equality'},
+        {value: 'peace_building', label: 'Peace Building'},
+        {value: 'youth_right_and_civic_engagement', label: 'Youth Right and Civic Engagement'},
+        {value: 'other', label: 'Other'},
+    ];
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -83,6 +120,26 @@ export default function NationalYouthPage() {
                         id="stakeholder"
                     />
 
+                    <TextField
+                        type="text"
+                        label="Why do you want to participate in National Youth Validation Workshop?"
+                        placeholder="Reason"
+                        value={reason}
+                        onChange={setReason}
+                        required
+                        id="reason"
+                    />
+
+                    <TextField
+                        type="text"
+                        label="What is your expectation from National Youth Validation Workshop?"
+                        placeholder="Expectation"
+                        value={expectation}
+                        onChange={setExpectation}
+                        required
+                        id="expectation"
+                    />
+
                     {/* Embassy field */}
                     <TextField
                         type="dropdown"
@@ -95,16 +152,14 @@ export default function NationalYouthPage() {
                         id="embassy"
                     />
 
-                    {/* Baking Business field */}
                     <TextField
-                        type="dropdown"
-                        label="What are your expectations for the training?"
-                        placeholder="Yes/No"
-                        value={expectation}
-                        onChange={setExpectation}
+                        type="text"
+                        label="Do you belong to a youth focused organization?"
+                        placeholder="Yes/No, Name of Organization"
+                        value={youthFocusedOrganization}
+                        onChange={setYouthFocusedOrganization}
                         required
-                        options={bakingBusinessOptions}
-                        id="baking_business"
+                        id="youth_focused_organization"
                     />
 
                     {/* Baking Business field */}
@@ -115,7 +170,7 @@ export default function NationalYouthPage() {
                         value={application}
                         onChange={setApplication}
                         required
-                        options={bakingBusinessOptions}
+                        options={useOfOutcomeOptions}
                         id="baking_business"
                     />
                     {/* Baking Business field */}
@@ -126,7 +181,7 @@ export default function NationalYouthPage() {
                         value={previousEngagement}
                         onChange={setPreviousEngagement}
                         required
-                        options={bakingBusinessOptions}
+                        options={previousEngagementOptions}
                         id="baking_business"
                     />
                     {/* Benefited from FMYD field */}
@@ -137,19 +192,18 @@ export default function NationalYouthPage() {
                         value={benefitedFromFMYD}
                         onChange={setBenefitedFromFMYD}
                         required
-                        options={bakingBusinessOptions}
+                        options={previousEngagementOptions}
                         id="baking_business"
                     />
-
-                    {/* Use of outcome field */}
+                    {/* Urgent Priority field */}
                     <TextField
                         type="dropdown"
-                        label="How do you intend to use the outcome of the training?"
-                        placeholder="Use of Outcome"
-                        value={useOfOutcome}
-                        onChange={setUseOfOutcome}
+                        label="What do you think is the most urgent priority for youth development in Nigeria?"
+                        placeholder="Urgent Priority"
+                        value={urgentPriority}
+                        onChange={setUrgentPriority}
                         required
-                        options={bakingBusinessOptions}
+                        options={urgentPriorityOptions}
                         id="baking_business"
                     />
 
@@ -161,7 +215,7 @@ export default function NationalYouthPage() {
                         value={geopoliticalZone}
                         onChange={setGeopoliticalZone}
                         required
-                        options={bakingBusinessOptions}
+                        options={geographicalLocationOptions}
                         id="baking_business"
                     />
 

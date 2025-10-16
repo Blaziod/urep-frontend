@@ -31,23 +31,32 @@ export default function AfricanYouthPage() {
     ];
 
     const advocacyOptions = [
-        { value: 'single', label: 'Single' },
-        { value: 'married', label: 'Married' },
-        { value: 'divorced', label: 'Divorced' },
-        { value: 'widowed', label: 'Widowed' },
+        { value: 'advocacy', label: 'Advocacy' },
+        { value: 'createawareness', label: 'Create Awareness' },
+        { value: 'youthclub', label: 'Start a Youth Club' },
+        { value: 'mentorship', label: 'Mentorship' },
+        { value: 'other', label: 'Other' },
     ];
 
     const previousParticipationOptions = [
         { value: 'Yes', label: 'Yes' },
         { value: 'No', label: 'No' },
     ];
-    const sponsorshipOptions = [
-        { value: 'Yes', label: 'Yes' },
-        { value: 'No', label: 'No' },
-    ];
     const youthFocusedOrganizationOptions = [
         { value: 'Yes', label: 'Yes' },
         { value: 'No', label: 'No' },
+    ];
+
+    const sponsorshipOptions = [
+        { value: 'state_govt', label: 'State Government' },
+        { value: 'imo', label: 'IMO' },
+        { value: 'ngo', label: 'NGO' },
+        { value: 'EU', label: 'European Union' },
+        { value: 'embassy', label: 'Embassy' },
+        { value: 'naptip', label: 'NAPTIP' },
+        { value: 'ndlea', label: 'NDLEA' },
+        { value: 'nis', label: 'NIS' },
+        { value: 'fmle', label: 'FMLE' },
     ];
 
 
@@ -91,7 +100,7 @@ export default function AfricanYouthPage() {
                     <TextField
                         type="text"
                         label="Are you a youth development professional"
-                        placeholder="Youth Professional"
+                        placeholder="Yes, Area of expertise"
                         value={professional}
                         onChange={setProfessional}
                         required
@@ -101,7 +110,7 @@ export default function AfricanYouthPage() {
                     {/* Embassy field */}
                     <TextField
                         type="dropdown"
-                        label="What organisation is nominating you"
+                        label="Your sponsoring organization?"
                         placeholder="Embassy"
                         value={embassy}
                         onChange={setEmbassy}
@@ -124,7 +133,7 @@ export default function AfricanYouthPage() {
                     {/* Reason field */}
                     <TextField
                         type="text"
-                        label="What is the reason for your participation?"
+                        label="Why do you want to participate in African/National Youth Day 2025?"
                         placeholder="Reason"
                         value={reason}
                         onChange={setReason}
@@ -153,6 +162,17 @@ export default function AfricanYouthPage() {
                         required
                         options={previousParticipationOptions}
                         id="previous_participation"
+                    />
+
+                    <TextField
+                        type={'dropdown'}
+                        label={'Have you ever participated in any FMYD program?'}
+                        placeholder={'Previous FMYD Participation'}
+                        value={previousParticipation}
+                        onChange={setPreviousParticipation}
+                        required
+                        options={previousParticipationOptions}
+                        id={'previous_fmyd_participation'}
                     />
 
                     {/* Sponsorship field */}
