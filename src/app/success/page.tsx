@@ -20,7 +20,7 @@ export default function SuccessPage() {
             </div>
             <div className={'w-full bg-white px-4 sm:px-8 md:px-16 lg:px-44 items-center justify-center flex flex-col'}>
                 <h1 className={'text-black font-bold text-xl sm:text-2xl text-center my-6 sm:my-10'}>You have successfully registered with UREP</h1>
-                <h2 className={'text-black font-medium text-lg sm:text-xl text-center'}>THANK YOU FOR REGISTERING. YOUR UNIQUE ID IS:</h2>
+                <h2 className={'text-black font-medium text-lg sm:text-xl text-center'}>THANK YOU FOR REGISTERING. YOUR UNIQUE IDCODE IS:</h2>
                 <h2 className={'text-black font-medium text-lg sm:text-xl text-center'}>ID CODE IS SHOWN BELOW</h2>
 
                 <div className={'bg-gray-100 px-4 sm:px-8 py-4 sm:py-6 mt-6  flex flex-row items-center justify-center'}>
