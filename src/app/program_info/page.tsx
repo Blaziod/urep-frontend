@@ -93,10 +93,6 @@ export default function ProgramInfo() {
                 <div className={'w-full h-4 bg-[#CECDCD]'}></div>
                 <div className={' w-full h-4 bg-[#277B12]'}></div>
             </div>
-            <div className={'flex flex-row items-center justify-between px-3'}>
-                <h2 className={'font-semibold text-xl'}>1. SPECIFIC PROGRAM INFORMATION</h2>
-                <h2 className={'font-medium text-sm text-gray-500'}>2. Program Specific Questions</h2>
-            </div>
             <div className={'flex flex-row items-center justify-evenly px-3'}>
                 <form onSubmit={handleSubmit} className={'w-[700px] gap-y-3.5'}>
                     {/* Program field - static display */}

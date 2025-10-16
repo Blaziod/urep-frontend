@@ -28,7 +28,6 @@ export default function Home() {
         'Young entrepreneurs or graduates seeking hands-on skills to start a business ',
         'Unemployed youths seeking self-reliance through vocational training',
         'Youth-focused organizations supporting entrepreneurship',
-        'Government agencies and development partners interested in youth empowerment'
       ],
       mainImage: '/images/cooking_chefs.png',
       thumbnailImage: '/images/chef_small.png',
@@ -48,7 +47,6 @@ export default function Home() {
       ],
       targetAudience: [
         'Youths aged 18–35, particularly in migration-prone communities.',
-        'Youth development professionals.',
         'Migration stakeholders (IOM, NAPTIP, NDLEA, Immigration Services, Embassies).',
         'CSOs and NGOs working on migration and human trafficking'
       ],
