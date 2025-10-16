@@ -25,12 +25,17 @@ export default function BakeprenuerPage() {
     const [reason, setReason] = useState('');
     const [expectation, setExpectation] = useState('');
     const [previousParticipation, setPreviousParticipation] = useState('');
+    const [sponsoringOrganization, setSponsoringOrganization] = useState('');
+    const [geographicalLocation, setGeographicalLocation] = useState('');
 
 
-    const embassyOptions = [
-        { value: 'option1', label: 'Option 1' },
-        { value: 'option2', label: 'Option 2' },
-        { value: 'option3', label: 'Option 3' },
+    const interest = [
+        { value: 'bread', label: 'Bread making' },
+        { value: 'cake_pastry', label: 'Cake and Pastry' },
+        { value: 'snack', label: 'Snack and Fast Food' },
+        { value: 'confectionery', label: 'Confectionery' },
+        { value: 'food_business', label: 'Food Business' },
+        { value: 'other', label: 'Other' },
     ];
 
     const bakingBusinessOptions = [
@@ -60,21 +65,30 @@ export default function BakeprenuerPage() {
         { value: 'Artisan', label: 'Artisan' },
         { value: 'Other', label: 'Other' },
     ];
-    const reasonOptions = [
-        { value: 'Education', label: 'Education' },
-        { value: 'Employment', label: 'Employment' },
-        { value: 'Other', label: 'Other' },
-    ];
-    const expectationOptions = [
-        { value: 'Yes', label: 'Yes' },
-        { value: 'No', label: 'No' },
-    ];
     const previousParticipationOptions = [
         { value: 'Yes', label: 'Yes' },
         { value: 'No', label: 'No' },
     ];
+    const previousKnowledgeOptions = [
+        { value: 'Yes', label: 'Yes' },
+        { value: 'No', label: 'No' },
+    ];
 
+    const sponsoringOrganizationOptions = [
+        { value: 'NGO', label: 'NGO' },
+        { value: 'Government Agency', label: 'Government Agency' },
+        { value: 'Private Sector', label: 'Private Sector' },
+        { value: 'Other', label: 'Other' },
+    ];
 
+    const geographicalLocationOptions = [
+        { value: 'North Central', label: 'North Central' },
+        { value: 'North East', label: 'North East' },
+        { value: 'North West', label: 'North West' },
+        { value: 'South East', label: 'South East' },
+        { value: 'South South', label: 'South South' },
+        { value: 'South West', label: 'South West' },
+    ];
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -137,25 +151,23 @@ export default function BakeprenuerPage() {
 
                     {/* Reason field */}
                     <TextField
-                        type="dropdown"
-                        label="What is the reason for your participation?"
+                        type="text"
+                        label="Why do you want to participate in Bakerepuner Nigeria?"
                         placeholder="Reason"
                         value={reason}
                         onChange={setReason}
                         required
-                        options={reasonOptions}
                         id="reason"
                     />
 
                     {/* Expectation field */}
                     <TextField
-                        type="dropdown"
-                        label="What is your expectation for the training?"
+                        type="text"
+                        label="What is your expectation from Bakerepuner Nigeria?"
                         placeholder="Expectation"
                         value={expectation}
                         onChange={setExpectation}
                         required
-                        options={expectationOptions}
                         id="expectation"
                     />
 
@@ -172,11 +184,13 @@ export default function BakeprenuerPage() {
                     />
                     {/* Youth Professional field */}
                     <TextField
-                        type="text"
+                        type="dropdown"
                         label="Do you hahve prior knowledge or experience in baking or confectionery"
                         placeholder="Previous Knowledge"
                         value={knowledge}
                         onChange={setKnowledge}
+                        required
+                        options={previousKnowledgeOptions}
                         id="previous_knowledge"
                     />
 
@@ -188,7 +202,7 @@ export default function BakeprenuerPage() {
                         value={bakingInterest}
                         onChange={setBakingInterest}
                         required
-                        options={embassyOptions}
+                        options={interest}
                         id="embassy"
                     />
 
@@ -216,6 +230,18 @@ export default function BakeprenuerPage() {
                         id="baking_support"
                     />
 
+                    {/* Sponsoring Organization field */}
+                    <TextField
+                        type="dropdown"
+                        label="What is the sponsoring organization for this training?"
+                        placeholder="Sponsoring Organization"
+                        value={sponsoringOrganization}
+                        onChange={setSponsoringOrganization}
+                        required
+                        options={sponsoringOrganizationOptions}
+                        id="sponsoring_organization"
+                    />
+
                     {/* Time duration field */}
                     <TextField
                         type="dropdown"
@@ -227,6 +253,19 @@ export default function BakeprenuerPage() {
                         options={timeDurationOptions}
                         id="time_duration"
                     />
+
+                    {/* Geographical Location field */}
+                    <TextField
+                        type="dropdown"
+                        label="What is your geographical location?"
+                        placeholder="Geographical Location"
+                        value={geographicalLocation}
+                        onChange={setGeographicalLocation}
+                        required
+                        options={geographicalLocationOptions}
+                        id="geographical_location"
+                    />
+
                     {/* Back and Next button */}
                     <div className={'flex justify-between items-center mt-7'}>
                         <button
