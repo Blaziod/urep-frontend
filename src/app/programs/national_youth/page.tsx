@@ -19,6 +19,10 @@ export default function NationalYouthPage() {
     const [organization, setOrganization] = useState('');
     const [expectation, setExpectation] = useState('');
     const [application, setApplication] = useState('');
+    const [useOfOutcome, setUseOfOutcome] = useState('');
+    const [previousEngagement, setPreviousEngagement] = useState('');
+    const [benefitedFromFMYD, setBenefitedFromFMYD] = useState('');
+    const [geopoliticalZone, setGeopoliticalZone] = useState('');
 
     const embassyOptions = [
         { value: 'option1', label: 'Option 1' },
@@ -54,7 +58,6 @@ export default function NationalYouthPage() {
                 </div>
                 <div>
                     <Link href="/login" className={' bg-white text-black hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2.5 text-center md:mr-2 mb-2 md:mb-0'}>Login</Link>
-                    <Link href={'/register'} className={' bg-[#277B12] text-white hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2.5 text-center mb-2 md:mb-0 border-white border-2'}>Register</Link>
                 </div>
             </div>
             <div className={'flex flex-col items-center w-full'}>
@@ -111,6 +114,52 @@ export default function NationalYouthPage() {
                         placeholder="Advocacy"
                         value={application}
                         onChange={setApplication}
+                        required
+                        options={bakingBusinessOptions}
+                        id="baking_business"
+                    />
+                    {/* Baking Business field */}
+                    <TextField
+                        type="dropdown"
+                        label="How have you previously engaged with the Federal Ministry of Youth Development?"
+                        placeholder="Workshops/Training"
+                        value={previousEngagement}
+                        onChange={setPreviousEngagement}
+                        required
+                        options={bakingBusinessOptions}
+                        id="baking_business"
+                    />
+                    {/* Benefited from FMYD field */}
+                    <TextField
+                        type="dropdown"
+                        label="Have you benefited from the Federal Ministry of Youth Development?"
+                        placeholder="Yes/No"
+                        value={benefitedFromFMYD}
+                        onChange={setBenefitedFromFMYD}
+                        required
+                        options={bakingBusinessOptions}
+                        id="baking_business"
+                    />
+
+                    {/* Use of outcome field */}
+                    <TextField
+                        type="dropdown"
+                        label="How do you intend to use the outcome of the training?"
+                        placeholder="Use of Outcome"
+                        value={useOfOutcome}
+                        onChange={setUseOfOutcome}
+                        required
+                        options={bakingBusinessOptions}
+                        id="baking_business"
+                    />
+
+                    {/* Geopolitical Zone field */}
+                    <TextField
+                        type="dropdown"
+                        label="What is your geopolitical zone?"
+                        placeholder="Geopolitical Zone"
+                        value={geopoliticalZone}
+                        onChange={setGeopoliticalZone}
                         required
                         options={bakingBusinessOptions}
                         id="baking_business"

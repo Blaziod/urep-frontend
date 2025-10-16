@@ -18,6 +18,11 @@ export default function AfricanYouthPage() {
     const [professional, setProfessional] = useState('');
     const [embassy, setEmbassy] = useState('');
     const [advocacy, setAdvocacy] = useState('');
+    const [reason, setReason] = useState('');
+    const [expectation, setExpectation] = useState('');
+    const [previousParticipation, setPreviousParticipation] = useState('');
+    const [sponsorship, setSponsorship] = useState('');
+    const [youthFocusedOrganization, setYouthFocusedOrganization] = useState('');
 
     const embassyOptions = [
         { value: 'option1', label: 'Option 1' },
@@ -30,6 +35,19 @@ export default function AfricanYouthPage() {
         { value: 'married', label: 'Married' },
         { value: 'divorced', label: 'Divorced' },
         { value: 'widowed', label: 'Widowed' },
+    ];
+
+    const previousParticipationOptions = [
+        { value: 'Yes', label: 'Yes' },
+        { value: 'No', label: 'No' },
+    ];
+    const sponsorshipOptions = [
+        { value: 'Yes', label: 'Yes' },
+        { value: 'No', label: 'No' },
+    ];
+    const youthFocusedOrganizationOptions = [
+        { value: 'Yes', label: 'Yes' },
+        { value: 'No', label: 'No' },
     ];
 
 
@@ -55,7 +73,6 @@ export default function AfricanYouthPage() {
                 </div>
                 <div>
                     <Link href="/login" className={' bg-white text-black hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2.5 text-center md:mr-2 mb-2 md:mb-0'}>Login</Link>
-                    <Link href={'/register'} className={' bg-[#277B12] text-white hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2.5 text-center mb-2 md:mb-0 border-white border-2'}>Register</Link>
                 </div>
             </div>
             <div className={'flex flex-col items-center w-full'}>
@@ -103,6 +120,63 @@ export default function AfricanYouthPage() {
                         required
                         options={advocacyOptions}
                         id="advocacy"
+                    />
+                    {/* Reason field */}
+                    <TextField
+                        type="text"
+                        label="What is the reason for your participation?"
+                        placeholder="Reason"
+                        value={reason}
+                        onChange={setReason}
+                        required
+                        id="reason"
+                    />
+
+                    {/* Expectation field */}
+                    <TextField
+                        type="text"
+                        label="What is your expectation for the training?"
+                        placeholder="Expectation"
+                        value={expectation}
+                        onChange={setExpectation}
+                        required
+                        id="expectation"
+                    />
+
+                    {/* Previous Participation field */}
+                    <TextField
+                        type="dropdown"
+                        label="Have you participated in any similar program in the past?"
+                        placeholder="Previous Participation"
+                        value={previousParticipation}
+                        onChange={setPreviousParticipation}
+                        required
+                        options={previousParticipationOptions}
+                        id="previous_participation"
+                    />
+
+                    {/* Sponsorship field */}
+                    <TextField
+                        type="dropdown"
+                        label="Your sponsoring organization?"
+                        placeholder="Sponsorship"
+                        value={sponsorship}
+                        onChange={setSponsorship}
+                        required
+                        options={sponsorshipOptions}
+                        id="sponsorship"
+                    />
+
+                    {/* Youth Focused Organization field */}
+                    <TextField
+                        type="dropdown"
+                        label="Are you a youth focused organization?"
+                        placeholder="Youth Focused Organization"
+                        value={youthFocusedOrganization}
+                        onChange={setYouthFocusedOrganization}
+                        required
+                        options={youthFocusedOrganizationOptions}
+                        id="youth_focused_organization"
                     />
                     <div className={'flex justify-between items-center mt-7'}>
                         <button

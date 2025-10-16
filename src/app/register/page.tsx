@@ -158,13 +158,12 @@ export default function RegisterPage() {
                     </div>
                     <div>
                         <Link href="/login" className={' bg-white text-black hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2.5 text-center md:mr-2 mb-2 md:mb-0'}>Login</Link>
-                        <Link href={'/program_register'} className={' bg-[#277B12] text-white hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2.5 text-center mb-2 md:mb-0 border-white border-2'}>Register</Link>
                     </div>
                 </div>
                 <div className={'flex flex-col items-center w-full'}>
                     <h1 className={'font-bold text-3xl my-2'}>Federal Ministry of Youth Development</h1>
                     <h2 className={'font-semibold text-2xl mb-4'}>UNIFIED REGISTRATION PORTAL (UREP)</h2>
-
+                    <h2 className={'font-semibold text-xl mb-4'}>PERSONAL INFORMATION</h2>
                     <form onSubmit={handleSubmit} className={'my-5 w-[70%]'}>
                         {/* Programme field - static display */}
                         <div className="mb-4">

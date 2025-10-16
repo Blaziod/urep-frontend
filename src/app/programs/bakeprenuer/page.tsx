@@ -20,6 +20,12 @@ export default function BakeprenuerPage() {
     const [bakingBusiness, setBakingBusiness] = useState('');
     const [bakingSupport, setBakingSupport] = useState('');
     const [timeDuration, setTimeDuration] = useState('');
+    const [youthBracket, setYouthBracket] = useState('');
+    const [status, setStatus] = useState('');
+    const [reason, setReason] = useState('');
+    const [expectation, setExpectation] = useState('');
+    const [previousParticipation, setPreviousParticipation] = useState('');
+
 
     const embassyOptions = [
         { value: 'option1', label: 'Option 1' },
@@ -32,13 +38,40 @@ export default function BakeprenuerPage() {
         { value: 'no', label: 'No' },
     ];
     const bakingSupportOptions = [
-        { value: 'yes', label: 'Yes' },
-        { value: 'no', label: 'No' },
+        { value: 'family', label: 'Family Support' },
+        { value: 'coordinator', label: 'Coordinator Support' },
+        { value: 'other', label: 'Other' },
+        { value: 'sponsorship', label: 'Sponsorship' },
     ];
     const timeDurationOptions = [
         { value: '3_months', label: '3 Months' },
         { value: '6_months', label: '6 Months' },
         { value: '1_year', label: '1 Year' },
+    ];
+    const youthBracketOptions = [
+        { value: 'yes', label: 'Yes' },
+        { value: 'no', label: 'No' },
+    ];
+    const statusOptions = [
+        { value: 'Student', label: 'Student' },
+        {value: 'Employed', label: 'Employed' },
+        { value: 'Unemployed', label: 'Unemployed' },
+        { value: 'Graduate', label: 'Graduate' },
+        { value: 'Artisan', label: 'Artisan' },
+        { value: 'Other', label: 'Other' },
+    ];
+    const reasonOptions = [
+        { value: 'Education', label: 'Education' },
+        { value: 'Employment', label: 'Employment' },
+        { value: 'Other', label: 'Other' },
+    ];
+    const expectationOptions = [
+        { value: 'Yes', label: 'Yes' },
+        { value: 'No', label: 'No' },
+    ];
+    const previousParticipationOptions = [
+        { value: 'Yes', label: 'Yes' },
+        { value: 'No', label: 'No' },
     ];
 
 
@@ -64,7 +97,6 @@ export default function BakeprenuerPage() {
                 </div>
                 <div>
                     <Link href="/login" className={' bg-white text-black hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2.5 text-center md:mr-2 mb-2 md:mb-0'}>Login</Link>
-                    <Link href={'/register'} className={' bg-[#277B12] text-white hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2.5 text-center mb-2 md:mb-0 border-white border-2'}>Register</Link>
                 </div>
             </div>
             <div className={'flex flex-col items-center w-full'}>
@@ -79,6 +111,65 @@ export default function BakeprenuerPage() {
             </div>
             <div className={'flex flex-row items-center justify-evenly px-3 mt-10'}>
                 <form onSubmit={handleSubmit} className={'w-[700px] gap-y-3.5'}>
+                    {/* Youth Bracket field */}
+                    <TextField
+                        type="dropdown"
+                        label="Are you within the youth age bracket(18-35)?"
+                        placeholder="Youth Bracket"
+                        value={youthBracket}
+                        onChange={setYouthBracket}
+                        required
+                        options={youthBracketOptions}
+                        id="youth_bracket"
+                    />
+
+                    {/* Status field */}
+                    <TextField
+                        type="dropdown"
+                        label="What is your current status?"
+                        placeholder="Status"
+                        value={status}
+                        onChange={setStatus}
+                        required
+                        options={statusOptions}
+                        id="status"
+                    />
+
+                    {/* Reason field */}
+                    <TextField
+                        type="dropdown"
+                        label="What is the reason for your participation?"
+                        placeholder="Reason"
+                        value={reason}
+                        onChange={setReason}
+                        required
+                        options={reasonOptions}
+                        id="reason"
+                    />
+
+                    {/* Expectation field */}
+                    <TextField
+                        type="dropdown"
+                        label="What is your expectation for the training?"
+                        placeholder="Expectation"
+                        value={expectation}
+                        onChange={setExpectation}
+                        required
+                        options={expectationOptions}
+                        id="expectation"
+                    />
+
+                    {/* Previous Participation field */}
+                    <TextField
+                        type="dropdown"
+                        label="Have you participated in any similar program in the past?"
+                        placeholder="Previous Participation"
+                        value={previousParticipation}
+                        onChange={setPreviousParticipation}
+                        required
+                        options={previousParticipationOptions}
+                        id="previous_participation"
+                    />
                     {/* Youth Professional field */}
                     <TextField
                         type="text"

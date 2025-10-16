@@ -18,6 +18,11 @@ export default function YouthMigrationPage() {
     const [professional, setProfessional] = useState('');
     const [organisation, setOrganisation] = useState('');
     const [outcome, setOutcome] = useState('');
+    const [sponsorship, setSponsorship] = useState('');
+    const [reason, setReason] = useState('');
+    const [expectation, setExpectation] = useState('');
+    const [previousParticipation, setPreviousParticipation] = useState('');
+    const [benefitedFromFMYD, setBenefitedFromFMYD] = useState('');
 
     const embassyOptions = [
         { value: 'option1', label: 'Option 1' },
@@ -30,6 +35,24 @@ export default function YouthMigrationPage() {
         { value: 'married', label: 'Married' },
         { value: 'divorced', label: 'Divorced' },
         { value: 'widowed', label: 'Widowed' },
+    ];
+
+    const sponsorshipOptions = [
+        { value: 'Yes', label: 'Yes' },
+        { value: 'No', label: 'No' },
+    ];
+    const reasonOptions = [
+        { value: 'Education', label: 'Education' },
+        { value: 'Employment', label: 'Employment' },
+        { value: 'Other', label: 'Other' },
+    ];
+    const previousParticipationOptions = [
+        { value: 'Yes', label: 'Yes' },
+        { value: 'No', label: 'No' },
+    ];
+    const benefitedFromFMYDOptions = [
+        { value: 'Yes', label: 'Yes' },
+        { value: 'No', label: 'No' },
     ];
 
 
@@ -55,7 +78,6 @@ export default function YouthMigrationPage() {
                 </div>
                 <div>
                     <Link href="/login" className={' bg-white text-black hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2.5 text-center md:mr-2 mb-2 md:mb-0'}>Login</Link>
-                    <Link href={'/register'} className={' bg-[#277B12] text-white hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2.5 text-center mb-2 md:mb-0 border-white border-2'}>Register</Link>
                 </div>
             </div>
             <span className={'text-center font-bold text-lg text-black flex flex-row items-center m-4'}>PROGRAM SPECIFIC QUESTIONS -<h4 className={'text-black text-center font-medium'}> Youth Migration Awareness and Management Programme (YMAMP)</h4></span>
@@ -103,6 +125,60 @@ export default function YouthMigrationPage() {
                         required
                         options={advocacyOptions}
                         id="advocacy"
+                    />
+                    {/* Sponsorship field */}
+                    <TextField
+                        type="dropdown"
+                        label="Are you being sponsored to attend this training"
+                        placeholder="Sponsorship"
+                        value={sponsorship}
+                        onChange={setSponsorship}
+                        required
+                        options={sponsorshipOptions}
+                        id="sponsorship"
+                    />
+                    {/* Reason field */}
+                    <TextField
+                        type="dropdown"
+                        label="What is your reason for attending this training"
+                        placeholder="Reason"
+                        value={reason}
+                        onChange={setReason}
+                        options={reasonOptions}
+                        required
+                        id="reason"
+                    />
+                    {/* Expectation field */}
+                    <TextField
+                        type="text"
+                        label="What do you expect to gain from attending this training"
+                        placeholder="Expectation"
+                        value={expectation}
+                        onChange={setExpectation}
+                        required
+                        id="expectation"
+                    />
+                    {/* Previous Participation field */}
+                    <TextField
+                        type="text"
+                        label="Have you previously participated in any FMYD program or similar program"
+                        placeholder="Previous Participation"
+                        value={previousParticipation}
+                        onChange={setPreviousParticipation}
+                        options={previousParticipationOptions}
+                        required
+                        id="previous_participation"
+                    />
+                    {/* Benefited from FMYD field */}
+                    <TextField
+                        type="dropdown"
+                        label="Have you benefited from the FMYD program"
+                        placeholder="Benefited from FMYD"
+                        value={benefitedFromFMYD}
+                        onChange={setBenefitedFromFMYD}
+                        required
+                        options={benefitedFromFMYDOptions}
+                        id="benefited_from_fmyd"
                     />
                     {/* Back and Next button */}
                     <div className={'flex justify-between items-center mt-7'}>
