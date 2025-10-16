@@ -54,7 +54,7 @@ export default function Home() {
     },
     {
       id: 'national_youth',
-      title: 'National Youth Conference',
+      title: 'National Youth Policy Validation Workshop',
       background: 'The National Youth Policy Validation Workshop provides a platform for stakeholders to review\n' +
           '                        and validate the revised National Youth Policy. It ensures inclusivity, stakeholder input, and\n' +
           '                        alignment of the policy with current realities facing Nigerian youths.',
