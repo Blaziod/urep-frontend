@@ -43,6 +43,8 @@ export default function RegisterPage() {
     // const [agreeProgramTerms, setAgreeProgramTerms] = useState(false);
     // const [showTermsModal, setShowTermsModal] = useState(false);
     const [organisation, setOrganisation] = useState('');
+    const [receiveOTP, setReceiveOTP] = useState('');
+    const [otp, setOtp] = useState('');
 
     // Set the program from URL parameter when component mounts
     React.useEffect(() => {
@@ -106,6 +108,11 @@ export default function RegisterPage() {
         { value: 'Yobe', label: 'Yobe' },
         { value: 'Zamfara', label: 'Zamfara' },
     ];
+
+    const otpOptions= [
+        { value: 'email', label: 'Email' },
+        { value: 'sms', label: 'SMS' },
+    ]
 
     const lgaOptions= [
         { value: 'Aba', label: 'Aba' },
@@ -205,6 +212,29 @@ export default function RegisterPage() {
                             required
                             id="nin"
                         />
+                        {/* OTP Receive Option field */}
+                        <TextField
+                            type="dropdown"
+                            label="How do you want to receive the OTP?"
+                            placeholder="Select your preferred method"
+                            value={receiveOTP}
+                            onChange={setReceiveOTP}
+                            options={otpOptions}
+                            required
+                            id="otp"
+                        />
+
+                        {/* OTP field */}
+                        <TextField
+                            type="text"
+                            label="OTP"
+                            placeholder="Enter your OTP"
+                            value={otp}
+                            onChange={setOtp}
+                            required
+                            id="otp"
+                        />
+
                         {/* Name field */}
                         <TextField
                             type="text"

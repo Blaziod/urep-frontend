@@ -200,7 +200,7 @@ export default function Home() {
             <div className={'flex flex-col lg:flex-row gap-6'}>
               {/* Program Card Carousel */}
               <div className={'flex-1 relative'}>
-                <div className={'flex flex-col justify-center bg-gradient-to-b from-[#277B12] to-[#F9E79F] rounded-lg shadow-xl p-6 h-[518px] md:h-[518px] lg:h-[518px] overflow-y-auto'}>
+                <div className={'flex flex-col justify-center bg-gradient-to-b from-[#277B12] to-[#F9E79F] rounded-lg shadow-xl p-6 h-[550px] md:h-[550px] lg:h-[518px] overflow-y-auto'}>
                   <h2 className={'font-semibold text-xl text-center text-black mb-3 md:mb-4'}>{currentProgram.title}</h2>
                   <div className={'flex flex-col lg:flex-row items-center gap-4'}>
                     <div className={'flex-col justify-start w-full lg:w-1/2'}>

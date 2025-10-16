@@ -119,39 +119,57 @@ export default function NationalYouthPage() {
                         options={bakingBusinessOptions}
                         id="baking_business"
                     />
-                </form>
-                <div className={'flex flex-col'}>
-                    <div className={'px-20 py-10 bg-[#277B12] items-center justify-center rounded-lg mb-8'}>
-                        <h2 className={'text-white text-2xl font-bold text-center mb-4'}> Why Register? </h2>
-                        <ul className={'list-disc text-white leading-8 text-xl'}>
-                            <li>Access to Youth Empowerment Programs</li>
-                            <li>Real-time Monitoring of Youth Policies</li>
-                            <li>Networking Opportunities with Peers and Mentors</li>
-                            <li>Personalized Support and Guidance</li>
-                            <li>Stay Updated on Latest Youth Initiatives</li>
-                        </ul>
-                        <h2 className={'text-[#F9E79F] text-xl font-bold text-center my-4 justify-self-start'}> Need Help? </h2>
-                        <Link href={'/'} className={'text-white text-lg font-medium text-center underline'}>Get Assistance</Link>
-                    </div>
+
                     {/* Back and Next button */}
-                    <div className={'flex justify-between items-center mt-4'}>
+                    <div className={'flex justify-between items-center mt-7'}>
                         <button
                             onClick={backToPreviousPage}
                             type="button"
-                            className={'w-24 justify-start bg-[#277B12] text-white py-4 px-4 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors'}
+                            className={'w-36 justify-start bg-[#277B12] text-white py-4 px-4 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors'}
                         >
                             Back
                         </button>
                         <button
                             onClick={routeToNextPage}
                             type="submit"
-                            className={'w-24 justify-end bg-[#277B12] text-white py-4 px-4 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors'}
+                            className={'w-36 justify-end bg-[#277B12] text-white py-4 px-4 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors'}
                         >
                             Next
                         </button>
                     </div>
+                </form>
+                {/*<div className={'flex flex-col'}>*/}
+                {/*    <div className={'px-20 py-10 bg-[#277B12] items-center justify-center rounded-lg mb-8'}>*/}
+                {/*        <h2 className={'text-white text-2xl font-bold text-center mb-4'}> Why Register? </h2>*/}
+                {/*        <ul className={'list-disc text-white leading-8 text-xl'}>*/}
+                {/*            <li>Access to Youth Empowerment Programs</li>*/}
+                {/*            <li>Real-time Monitoring of Youth Policies</li>*/}
+                {/*            <li>Networking Opportunities with Peers and Mentors</li>*/}
+                {/*            <li>Personalized Support and Guidance</li>*/}
+                {/*            <li>Stay Updated on Latest Youth Initiatives</li>*/}
+                {/*        </ul>*/}
+                {/*        <h2 className={'text-[#F9E79F] text-xl font-bold text-center my-4 justify-self-start'}> Need Help? </h2>*/}
+                {/*        <Link href={'/'} className={'text-white text-lg font-medium text-center underline'}>Get Assistance</Link>*/}
+                {/*    </div>*/}
+                {/*    /!* Back and Next button *!/*/}
+                {/*    <div className={'flex justify-between items-center mt-4'}>*/}
+                {/*        <button*/}
+                {/*            onClick={backToPreviousPage}*/}
+                {/*            type="button"*/}
+                {/*            className={'w-24 justify-start bg-[#277B12] text-white py-4 px-4 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors'}*/}
+                {/*        >*/}
+                {/*            Back*/}
+                {/*        </button>*/}
+                {/*        <button*/}
+                {/*            onClick={routeToNextPage}*/}
+                {/*            type="submit"*/}
+                {/*            className={'w-24 justify-end bg-[#277B12] text-white py-4 px-4 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors'}*/}
+                {/*        >*/}
+                {/*            Next*/}
+                {/*        </button>*/}
+                {/*    </div>*/}
 
-                </div>
+                {/*</div>*/}
             </div>
         </div>
     );
