@@ -14,17 +14,17 @@ export default function Home() {
       id: 'bakeprenuer',
       title: 'Bakeprenuer Nigeria',
       background: 'Bakeprenuer Nigeria is a youth empowerment and skills development\n' +
-          '                        initiative focused on the baking and confectionery industry.\n' +
-          '                        It seeks to equip young Nigerians with practical baking skills\n' +
-          '                        to enable them to start or expand small-scale businesses,\n' +
+          '                        initiative focused on the baking and food industry.\n' +
+          '                        It seeks to equip young Nigerians with practical skills\n' +
+          '                        to enable them to start small-scale businesses,\n' +
           '                        create job opportunities,',
       objectives: [
         'To provide Nigerian youths with modern baking and confectionery skills aligned with industry standards.',
         'To promote entrepreneurship and self-reliance through practical, hands-on learning.'
       ],
       targetAudience: [
-        'Youths (18–35 years) interested in baking, confectionery, or food business',
-        'Young entrepreneurs or graduates seeking hands-on skills to start a business ',
+        'Youths (18–35 years) interested in baking, or food business',
+        'Young entrepreneurs or graduates seeking skills to start a business ',
         'Unemployed youths seeking self-reliance through vocational training',
       ],
       mainImage: '/images/cooking_chefs.png',
