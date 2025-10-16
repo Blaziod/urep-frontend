@@ -17,8 +17,7 @@ export default function Home() {
           '                        initiative focused on the baking and confectionery industry.\n' +
           '                        It seeks to equip young Nigerians with practical baking skills\n' +
           '                        to enable them to start or expand small-scale businesses,\n' +
-          '                        create job opportunities, and\n' +
-          '                        contribute to reducing unemployment.',
+          '                        create job opportunities,',
       objectives: [
         'To provide Nigerian youths with modern baking and confectionery skills aligned with industry standards.',
         'To promote entrepreneurship and self-reliance through practical, hands-on learning.'
@@ -27,7 +26,6 @@ export default function Home() {
         'Youths (18–35 years) interested in baking, confectionery, or food business',
         'Young entrepreneurs or graduates seeking hands-on skills to start a business ',
         'Unemployed youths seeking self-reliance through vocational training',
-        'Youth-focused organizations supporting entrepreneurship',
       ],
       mainImage: '/images/cooking_chefs.png',
       thumbnailImage: '/images/chef_small.png',
@@ -37,10 +35,9 @@ export default function Home() {
     {
       id: 'youth_migration',
       title: 'Youth Migration Awareness Programme',
-      background: 'he Youth Migration Awareness & Management Programme seeks to address irregular\n' +
+      background: 'The Youth Migration Awareness & Management Programme seeks to address irregular\n' +
           '                        migration challenges by educating young people on safe migration pathways, risks of irregular\n' +
-          '                        migration, and opportunities for empowerment within Nigeria. It also strengthens collaboration\n' +
-          '                        among migration management agencies and youth groups.',
+          '                        migration, and opportunities for empowerment within Nigeria.',
       objectives: [
         'To educate Nigerian youth on safe migration pathways and the risks of irregular migration.',
         'To provide information on opportunities for empowerment within Nigeria.'
