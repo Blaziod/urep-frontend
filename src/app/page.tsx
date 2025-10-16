@@ -32,7 +32,8 @@ export default function Home() {
       ],
       mainImage: '/images/cooking_chefs.png',
       thumbnailImage: '/images/chef_small.png',
-      registerLink: '/register?program=bakeprenuer'
+      registerLink: '/register?program=bakeprenuer',
+      date: '02/11/2025',
     },
     {
       id: 'youth_migration',
@@ -53,7 +54,8 @@ export default function Home() {
       ],
       mainImage: '/images/students.png',
       thumbnailImage: '/images/students.png',
-      registerLink: '/register?program=youth_migration'
+      registerLink: '/register?program=youth_migration',
+      date: '10/11/2025',
     },
     {
       id: 'national_youth',
@@ -74,7 +76,8 @@ export default function Home() {
       ],
       mainImage: '/images/corpers.png',
       thumbnailImage: '/images/corpers.png',
-      registerLink: '/register?program=national_youth'
+      registerLink: '/register?program=national_youth',
+      date: '15/11/2025',
     },
     {
       id: 'african_youth',
@@ -96,7 +99,8 @@ export default function Home() {
       ],
       mainImage: '/images/speaker.png',
       thumbnailImage: '/images/speaker.png',
-      registerLink: '/register?program=african_youth'
+      registerLink: '/register?program=african_youth',
+      date: '20/11/2025',
     }
   ];
 
@@ -252,7 +256,7 @@ export default function Home() {
 
                   {/* Date display */}
                   <div className="flex justify-end mt-2">
-                    <p className="text-black text-sm font-bold">Date: 02/11/2025</p>
+                    <p className="text-black text-sm font-bold">Date: {currentProgram.date}</p>
                   </div>
                 </div>
 
