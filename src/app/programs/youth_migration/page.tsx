@@ -86,10 +86,6 @@ export default function YouthMigrationPage() {
                 <div className={'w-full h-4 bg-[#CECDCD]'}></div>
                 <div className={' w-full h-4 bg-[#277B12]'}></div>
             </div>
-            <div className={'flex flex-row items-center justify-between px-3'}>
-                <h2 className={'font-semibold text-xl'}>4. Youth Migration Awareness and Management Programme (YMAMP)</h2>
-                <h2 className={'font-medium text-sm text-gray-500'}>5. National Youth Mental Health Conference</h2>
-            </div>
             <div className={'flex flex-row items-center justify-evenly px-3 mt-10'}>
                 <form onSubmit={handleSubmit} className={'w-[700px] gap-y-3.5'}>
                     {/* Youth Professional field */}
