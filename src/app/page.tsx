@@ -129,7 +129,7 @@ export default function Home() {
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval); // Clean up on unmount
-  }, []);
+  }, [nextProgram]);
 
   return (
       <div className={'w-screen'}>

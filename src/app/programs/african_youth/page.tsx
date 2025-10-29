@@ -1,5 +1,4 @@
 'use client';
-import FooterBar from "@/components/FooterBar";
 import Image from "next/image";
 import Link from "next/link";
 import React, {useState} from "react";

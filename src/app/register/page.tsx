@@ -5,7 +5,6 @@ import Link from "next/link";
 import React, {useMemo, useState} from "react";
 import {TextField} from "@/components";
 import {useRouter} from "next/navigation";
-// @ts-ignore - no types available for this package
 import statesData from "nigerian-states/src/states.json";
 
 
@@ -119,16 +118,15 @@ export default function RegisterPage() {
         if (!programme) return '';
         const selectedProgram = programmeOptions.find(option => option.value === programme);
         return selectedProgram ? selectedProgram.label : '';
-    }, [programme]);
+    }, [programme, programmeOptions]);
 
     // Handle state change and load corresponding LGAs
     const handleStateChange = (selectedState: string) => {
         setState(selectedState);
         setLga(''); // Clear selected LGA when state changes
         
-        // @ts-ignore
-        const stateInfo = statesData[selectedState];
-        if (stateInfo && stateInfo.lgas) {
+        const stateInfo = statesData[selectedState as keyof typeof statesData] as { abbrv3: string; lgas: string[] } | undefined;
+        if (stateInfo && 'lgas' in stateInfo) {
             const lgaOpts = stateInfo.lgas.map((lgaName: string) => ({
                 value: lgaName,
                 label: lgaName
