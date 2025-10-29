@@ -5,6 +5,9 @@ import Link from "next/link";
 import React, {useMemo, useState} from "react";
 import {TextField} from "@/components";
 import {useRouter} from "next/navigation";
+// @ts-ignore - no types available for this package
+import statesData from "nigerian-states/src/states.json";
+
 
 export default function RegisterPage() {
 
@@ -36,15 +39,53 @@ export default function RegisterPage() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
     const [dob, setDob] = useState('');
     const [gender, setGender] = useState('');
     const [state, setState] = useState('');
     const [lga, setLga] = useState('');
+    const [stateOptions, setStateOptions] = useState<{value: string, label: string}[]>([]);
+    const [lgaOptions, setLgaOptions] = useState<{value: string, label: string}[]>([]);
     // const [agreeProgramTerms, setAgreeProgramTerms] = useState(false);
     // const [showTermsModal, setShowTermsModal] = useState(false);
     const [organisation, setOrganisation] = useState('');
     const [receiveOTP, setReceiveOTP] = useState('');
     const [otp, setOtp] = useState('');
+    const [isNINVerified, setIsNINVerified] = useState(false);
+    const [otpSent, setOtpSent] = useState(false);
+    const [generatedOTP, setGeneratedOTP] = useState('');
+    const [otpError, setOtpError] = useState('');
+    const [ninError, setNinError] = useState('');
+
+    // Demo NIN database
+    const demoNINDatabase: Record<string, { name: string; dob: string; gender: string }> = {
+        '12345678901': {
+            name: 'Adewale Johnson',
+            dob: '1995-03-15',
+            gender: 'Male'
+        },
+        '98765432109': {
+            name: 'Chiamaka Okonkwo',
+            dob: '1998-07-22',
+            gender: 'Female'
+        },
+        '11122233344': {
+            name: 'Ibrahim Musa',
+            dob: '1992-11-08',
+            gender: 'Male'
+        },
+        '55566677788': {
+            name: 'Blessing Adebayo',
+            dob: '2000-01-30',
+            gender: 'Female'
+        },
+        '99988877766': {
+            name: 'Chinedu Okafor',
+            dob: '1996-09-12',
+            gender: 'Male'
+        }
+    };
 
     // Set the program from URL parameter when component mounts
     React.useEffect(() => {
@@ -55,12 +96,23 @@ export default function RegisterPage() {
         }
     }, []);
 
+    // Load Nigerian states on mount
+    React.useEffect(() => {
+        const stateNames = Object.keys(statesData);
+        const stateOpts = stateNames.map((stateName: string) => ({
+            value: stateName,
+            label: stateName
+        }));
+        setStateOptions(stateOpts);
+    }, []);
+
     const programmeOptions= [
         { value: 'african_youth', label: 'African/National Youth Day 2025' },
         { value: 'bakeprenuer', label: 'Bakeprenuer Nigeria' },
         { value: 'national_youth', label: 'National Youth Policy Validation Workshop' },
         { value: 'youth_migration', label: 'Youth Migration Awareness and Management Programme (YMAMP)' },
     ];
+    
 
     // Get the selected program name
     const selectedProgramName = useMemo(() => {
@@ -69,62 +121,113 @@ export default function RegisterPage() {
         return selectedProgram ? selectedProgram.label : '';
     }, [programme]);
 
-    const stateOptions= [
-        { value: 'Abia', label: 'Abia' },
-        { value: 'Adamawa', label: 'Adamawa' },
-        { value: 'Akwa Ibom', label: 'Akwa Ibom' },
-        { value: 'Anambra', label: 'Anambra' },
-        { value: 'Bauchi', label: 'Bauchi' },
-        { value: 'Bayelsa', label: 'Bayelsa' },
-        { value: 'Benue', label: 'Benue' },
-        { value: 'Borno', label: 'Borno' },
-        { value: 'Cross River', label: 'Cross River' },
-        { value: 'Delta', label: 'Delta' },
-        { value: 'Ebonyi', label: 'Ebonyi' },
-        { value: 'Edo', label: 'Edo' },
-        { value: 'Ekiti', label: 'Ekiti' },
-        { value: 'Enugu', label: 'Enugu' },
-        { value: 'Federal Capital Territory', label: 'Federal Capital Territory' },
-        { value: 'Gombe', label: 'Gombe' },
-        { value: 'Imo', label: 'Imo' },
-        { value: 'Jigawa', label: 'Jigawa' },
-        { value: 'Kaduna', label: 'Kaduna' },
-        { value: 'Kano', label: 'Kano' },
-        { value: 'Katsina', label: 'Katsina' },
-        { value: 'Kebbi', label: 'Kebbi' },
-        { value: 'Kogi', label: 'Kogi' },
-        { value: 'Kwara', label: 'Kwara' },
-        { value: 'Lagos', label: 'Lagos' },
-        { value: 'Nasarawa', label: 'Nasarawa' },
-        { value: 'Niger', label: 'Niger' },
-        { value: 'Ogun', label: 'Ogun' },
-        { value: 'Ondo', label: 'Ondo' },
-        { value: 'Osun', label: 'Osun' },
-        { value: 'Oyo', label: 'Oyo' },
-        { value: 'Plateau', label: 'Plateau' },
-        { value: 'Rivers', label: 'Rivers' },
-        { value: 'Sokoto', label: 'Sokoto' },
-        { value: 'Taraba', label: 'Taraba' },
-        { value: 'Yobe', label: 'Yobe' },
-        { value: 'Zamfara', label: 'Zamfara' },
-    ];
+    // Handle state change and load corresponding LGAs
+    const handleStateChange = (selectedState: string) => {
+        setState(selectedState);
+        setLga(''); // Clear selected LGA when state changes
+        
+        // @ts-ignore
+        const stateInfo = statesData[selectedState];
+        if (stateInfo && stateInfo.lgas) {
+            const lgaOpts = stateInfo.lgas.map((lgaName: string) => ({
+                value: lgaName,
+                label: lgaName
+            }));
+            setLgaOptions(lgaOpts);
+        } else {
+            setLgaOptions([]);
+        }
+    };
 
-    const otpOptions= [
-        { value: 'email', label: 'Email' },
+    // Handle NIN change and validation
+    const handleNINChange = (value: string) => {
+        setNin(value);
+        setNinError('');
+        setIsNINVerified(false);
+        setOtpSent(false);
+        setOtp('');
+        // Clear previously filled data
+        if (!isNINVerified) {
+            setName('');
+            setDob('');
+            setGender('');
+        }
+    };
+
+    // Send OTP (simulated)
+    const handleSendOTP = () => {
+        if (!nin || nin.length !== 11) {
+            setNinError('Please enter a valid 11-digit NIN');
+            return;
+        }
+
+        if (!demoNINDatabase[nin]) {
+            setNinError('NIN not found in our records. Try: 12345678901, 98765432109, 11122233344, 55566677788, or 99988877766');
+            return;
+        }
+
+        if (!receiveOTP) {
+            setOtpError('Please select how you want to receive OTP');
+            return;
+        }
+
+        // Generate a random 6-digit OTP
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+        setGeneratedOTP(otp);
+        setOtpSent(true);
+        setNinError('');
+        setOtpError('');
+        
+        // In a real app, this would be sent via SMS/Email
+        alert(`OTP sent! For demo purposes, your OTP is: ${otp}`);
+    };
+
+    // Verify OTP and fill NIN data
+    const handleVerifyOTP = () => {
+        if (!otp) {
+            setOtpError('Please enter the OTP');
+            return;
+        }
+
+        if (otp !== generatedOTP) {
+            setOtpError('Invalid OTP. Please try again.');
+            return;
+        }
+
+        // OTP is correct, fetch and fill NIN data
+        const ninData = demoNINDatabase[nin];
+        if (ninData) {
+            setName(ninData.name);
+            setDob(ninData.dob);
+            setGender(ninData.gender);
+            setIsNINVerified(true);
+            setOtpError('');
+            alert('NIN verified successfully! Personal information has been filled.');
+        }
+    };
+
+    // Handle password change and validation
+    const handlePasswordChange = (value: string) => {
+        setPassword(value);
+        if (confirmPassword && value !== confirmPassword) {
+            setPasswordError('Passwords do not match');
+        } else {
+            setPasswordError('');
+        }
+    };
+
+    // Handle confirm password change and validation
+    const handleConfirmPasswordChange = (value: string) => {
+        setConfirmPassword(value);
+        if (password && value !== password) {
+            setPasswordError('Passwords do not match');
+        } else {
+            setPasswordError('');
+        }
+    };
+
+      const otpOptions= [
         { value: 'sms', label: 'SMS' },
-    ]
-
-    const lgaOptions= [
-        { value: 'Aba', label: 'Aba' },
-        { value: 'Abeokuta', label: 'Abeokuta' },
-        { value: 'Abuja', label: 'Abuja' },
-        { value: 'Ado-Ekiti', label: 'Ado-Ekiti' },
-        { value: 'Ado-Odo', label: 'Ado-Odo' },
-        { value: 'Afijio', label: 'Afijio' },
-        { value: 'Aguata', label: 'Aguata' },
-        { value: 'Ahoada', label: 'Ahoada' },
-        { value: 'Aiyedire', label: 'Aiyedire' },
-        { value: 'Akoko', label: 'Akoko' },
     ]
 
     const organisationOptions= [
@@ -137,8 +240,21 @@ export default function RegisterPage() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle login logic here
-        console.log('Login attempt with:', { nin, programme, name, email, password, dob, gender, state, lga });
+        
+        // Validate passwords match
+        if (password !== confirmPassword) {
+            setPasswordError('Passwords do not match');
+            return;
+        }
+
+        // Validate NIN is verified
+        if (!isNINVerified) {
+            alert('Please verify your NIN before submitting');
+            return;
+        }
+        
+        // Handle registration logic here
+        console.log('Registration attempt with:', { nin, programme, name, email, password, dob, gender, state, lga, organisation });
     };
 
     return (
@@ -202,15 +318,30 @@ export default function RegisterPage() {
                             id="organisation"
                         />
                         {/* NIN field */}
-                        <TextField
-                            type="text"
-                            label="National Identity Number"
-                            placeholder="Enter your NIN"
-                            value={nin}
-                            onChange={setNin}
-                            required
-                            id="nin"
-                        />
+                        <div className="mb-4">
+                            <label htmlFor="nin" className="block mb-2 text-sm mt-3 font-medium text-black">
+                                National Identity Number
+                                <span className="text-red-500 ml-1">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="nin"
+                                value={nin}
+                                onChange={(e) => handleNINChange(e.target.value)}
+                                placeholder="Enter your 11-digit NIN"
+                                className={`w-full px-4 py-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#277B12] ${
+                                    ninError ? 'border-red-500' : 'border-gray-300'
+                                }`}
+                                required
+                                maxLength={11}
+                                disabled={isNINVerified}
+                            />
+                            {ninError && <p className="mt-1 text-sm text-red-500">{ninError}</p>}
+                            {isNINVerified && (
+                                <p className="mt-1 text-sm text-green-600">✓ NIN verified successfully</p>
+                            )}
+                        </div>
+
                         {/* OTP Receive Option field */}
                         <TextField
                             type="dropdown"
@@ -220,49 +351,89 @@ export default function RegisterPage() {
                             onChange={setReceiveOTP}
                             options={otpOptions}
                             required
-                            id="otp"
+                            id="receiveOTP"
+                            disabled={isNINVerified}
                         />
 
-                        {/* OTP field */}
-                        <TextField
-                            type="text"
-                            label="OTP"
-                            placeholder="Enter your OTP"
-                            value={otp}
-                            onChange={setOtp}
-                            required
-                            id="otp"
-                        />
+                        {/* Send OTP Button */}
+                        {!otpSent && !isNINVerified && (
+                            <button
+                                type="button"
+                                onClick={handleSendOTP}
+                                className="w-full bg-[#277B12] text-white font-semibold py-3 px-6 mb-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors"
+                            >
+                                Send OTP
+                            </button>
+                        )}
+
+                        {/* OTP field - only show after OTP is sent */}
+                        {otpSent && !isNINVerified && (
+                            <div className="mb-4">
+                                <label htmlFor="otp" className="block mb-2 text-sm mt-3 font-medium text-black">
+                                    OTP
+                                    <span className="text-red-500 ml-1">*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    id="otp"
+                                    value={otp}
+                                    onChange={(e) => {
+                                        setOtp(e.target.value);
+                                        setOtpError('');
+                                    }}
+                                    placeholder="Enter the 6-digit OTP"
+                                    className={`w-full px-4 py-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#277B12] ${
+                                        otpError ? 'border-red-500' : 'border-gray-300'
+                                    }`}
+                                    required
+                                    maxLength={6}
+                                />
+                                {otpError && <p className="mt-1 text-sm text-red-500">{otpError}</p>}
+                                
+                                {/* Verify OTP Button */}
+                                <button
+                                    type="button"
+                                    onClick={handleVerifyOTP}
+                                    className="w-full bg-[#277B12] text-white font-semibold py-3 px-6 mt-3 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors"
+                                >
+                                    Verify OTP
+                                </button>
+                            </div>
+                        )}
 
                         {/* Name field */}
                         <TextField
                             type="text"
                             label="Name"
-                            placeholder="Enter your name"
+                            placeholder="Auto Filled with NIN"
                             value={name}
                             onChange={setName}
                             required
                             id="name"
+                            readOnly={true}
+                            
                         />
                         {/* Date of Birth field */}
                         <TextField
                             type="text"
                             label="Date of Birth"
-                            placeholder="Enter your date of birth"
+                            placeholder="Auto Filled with NIN"
                             value={dob}
                             onChange={setDob}
                             required
                             id="dob"
+                            readOnly={true}
                         />
                         {/* Gender field */}
                         <TextField
                             type="text"
                             label="Gender"
-                            placeholder="Select your gender"
+                            placeholder="Auto Filled with NIN"
                             value={gender}
                             onChange={setGender}
                             required
                             id="gender"
+                            readOnly={true}
                         />
                         {/* Email field */}
                         <TextField
@@ -280,9 +451,21 @@ export default function RegisterPage() {
                             label="Password"
                             placeholder="Enter your password"
                             value={password}
-                            onChange={setPassword}
+                            onChange={handlePasswordChange}
                             required
                             id="password"
+                            error={passwordError}
+                        />
+                        {/* Confirm Password field */}
+                        <TextField
+                            type="password"
+                            label="Confirm Password"
+                            placeholder="Re-enter your password"
+                            value={confirmPassword}
+                            onChange={handleConfirmPasswordChange}
+                            required
+                            id="confirmPassword"
+                            error={passwordError}
                         />
                         {/* State field */}
                         <TextField
@@ -290,7 +473,7 @@ export default function RegisterPage() {
                             label="State"
                             placeholder="Select your state"
                             value={state}
-                            onChange={setState}
+                            onChange={handleStateChange}
                             options={stateOptions}
                             required
                             id="state"
