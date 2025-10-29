@@ -91,18 +91,92 @@ export default function AfricanYouthPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         
-        // Validate required fields
+        // Question 1: Youth Professional
+        if (!isYouthProfessional) {
+            alert('Question 1: Please specify if you are a youth development professional');
+            return;
+        }
+
+        // If yes, expertise area is required
+        if (isYouthProfessional === 'yes' && !expertiseArea) {
+            alert('Question 1: Please specify your area of expertise');
+            return;
+        }
+
+        // Question 2: Participation Reason
+        if (!participationReason.trim()) {
+            alert('Question 2: Please explain why you want to participate in this programme');
+            return;
+        }
+
         const wordCount = participationReason.trim().split(/\s+/).filter(w => w).length;
         if (wordCount > 50) {
             setReasonError('Please reduce to 50 words or less');
+            alert('Question 2: Please reduce your response to 50 words or less');
             return;
         }
 
+        // Question 3: Sponsoring Organisation
+        if (!sponsoringOrg) {
+            alert('Question 3: Please select your sponsoring organisation');
+            return;
+        }
+
+        // Question 4: Youth Organization Membership
+        if (!belongsToOrg) {
+            alert('Question 4: Please specify if you belong to any youth-focused organization');
+            return;
+        }
+
+        // If yes, organization name is required
+        if (belongsToOrg === 'yes' && !organizationName.trim()) {
+            alert('Question 4: Please provide the name of the organization you belong to');
+            return;
+        }
+
+        // Question 5: Expectations
+        if (!expectations.trim()) {
+            alert('Question 5: Please describe your expectations of this programme');
+            return;
+        }
+
+        // Question 6: Programme Outcome
         if (programOutcome.length === 0) {
-            alert('Please select at least one program outcome');
+            alert('Question 6: Please select at least one intended outcome for this programme');
             return;
         }
 
+        // If "other" is selected, specification is required
+        if (programOutcome.includes('other') && !otherOutcome.trim()) {
+            alert('Question 6: Please specify your other intended outcome');
+            return;
+        }
+
+        // Question 7: Previous Participation
+        if (!previousParticipation) {
+            alert('Question 7: Please specify if you have participated in a similar policy validation programme');
+            return;
+        }
+
+        // If yes, details are required
+        if (previousParticipation === 'yes' && !previousProgramDetails.trim()) {
+            alert('Question 7: Please provide details about your previous participation');
+            return;
+        }
+
+        // Question 8: FMYD Programme Participation
+        if (!fmydParticipation) {
+            alert('Question 8: Please specify if you have participated in any FMYD programme before');
+            return;
+        }
+
+        // If yes, programme details are required
+        if (fmydParticipation === 'yes' && !fmydProgramDetails.trim()) {
+            alert('Question 8: Please provide the programme name and year');
+            return;
+        }
+
+        // All validations passed
         console.log('Form submission:', {
             isYouthProfessional,
             expertiseArea,
@@ -353,7 +427,6 @@ export default function AfricanYouthPage() {
                             Back
                         </button>
                         <button
-                            onClick={routeToNextPage}
                             type="submit"
                             className={'w-36 justify-end bg-[#277B12] text-white py-4 px-4 mb-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors'}
                         >
